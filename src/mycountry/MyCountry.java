@@ -18,6 +18,7 @@ public class MyCountry {
         // TODO code application logic here
         Login login = new Login();
         login.setVisible(true);
+        System.out.println("no");
     }
     
 }
