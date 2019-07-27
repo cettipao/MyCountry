@@ -1,24 +1,22 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Propietario es un residente del barrio
+ * que puede ingresar al barrio con una
+ * tarjeta RFID
  */
 package mycountry;
 
-/**
- *
- * @author cetti
- */
 public class Propietario extends Persona{
     private int idPropietario;
     private String usuario;
     private String password;
+    private String rfid;
 
-    public Propietario(int idPropietario, String usuario, String password, String nombre, String apellido, String DNI) {
+    public Propietario(int idPropietario, String usuario, String password, String rfid,String nombre, String apellido, String DNI) {
         super(nombre, apellido, DNI);
         this.idPropietario = idPropietario;
         this.usuario = usuario;
         this.password = password;
+        this.rfid = rfid;
     }
 
     public int getIdPropietario() {
@@ -45,9 +43,18 @@ public class Propietario extends Persona{
         this.password = password;
     }
 
+    public String getRfid() {
+        return rfid;
+    }
+
+    public void setRfid(String rfid) {
+        this.rfid = rfid;
+    }
+
     @Override
     public String toString() {
-        return "Propietario{" + "idPropietario=" + idPropietario + ", usuario=" + usuario + ", password=" + password + '}';
+        return "Propietario{" + "idPropietario=" + idPropietario + ", usuario=" + usuario + ", password=" + password + ", rfid=" + rfid + '}';
     }
+
     
 }

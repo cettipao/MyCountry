@@ -1,21 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Proyecto Programacion: MyCountry
+ * Profesores: Nicolas Fanin, Martín Navarro y Jeremías Antequera. 
+ * Cetti Paolo y Ninci Matias.
  */
 package mycountry;
 
-/**
- *
- * @author cetti
- */
 public class MyCountry {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        // TODO code application logic here
         Login login = new Login();
         login.setVisible(true);
     }

@@ -1,14 +1,11 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * La clase persona es una clase abstracta 
+ * que sera heredada por Visitante y Propietario.
+ * Incluye atributos basicos de una persona y ningun
+ * comportamiento en especial.
  */
 package mycountry;
 
-/**
- *
- * @author cetti
- */
 abstract class Persona {
     protected String nombre;
     protected String apellido;

@@ -1,20 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * El Visitante es la clase que puede entrar
+ * al barrio ya que fue invitado por un propietario.
  */
 package mycountry;
 
-/**
- *
- * @author cetti
- */
 public class Visitante extends Persona{
+    
     private int idVisitante;
-
-    public Visitante(int idVisitante, String nombre, String apellido, String DNI) {
+    private Propietario propietario;
+    
+    public Visitante(int idVisitante, Propietario propietario,String nombre, String apellido, String DNI) {
         super(nombre, apellido, DNI);
         this.idVisitante = idVisitante;
+        this.propietario = propietario;
     }
 
     public int getIdVisitante() {
@@ -25,10 +23,20 @@ public class Visitante extends Persona{
         this.idVisitante = idVisitante;
     }
 
+    public Propietario getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(Propietario propietario) {
+        this.propietario = propietario;
+    }
+
     @Override
     public String toString() {
-        return "Visitante{" + "idVisitante=" + idVisitante + '}';
+        return "Visitante{" + "idVisitante=" + idVisitante + ", propietario=" + propietario + '}';
     }
+
+    
     
     
 }
