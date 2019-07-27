@@ -21,6 +21,7 @@ public class FileManager {
     private Gson gson;
     private GestorPropietario gestorPropietario;
     private GestorVisitante gestorVisitante;
+    private GuardiaLogin guardiaLogin;
     
 
     public FileManager() {
@@ -64,6 +65,20 @@ public class FileManager {
         } 
     }
     
+    public void CrearGuardiaLogin(){
+        try{
+        File archivo = new File("src/json/guardiaLogin.txt");
+        FileReader fr = new FileReader(archivo);
+        BufferedReader br = new BufferedReader(fr);
+        String linea = br.readLine();
+        GuardiaLogin obj = gson.fromJson(linea, GuardiaLogin.class);
+        guardiaLogin = obj;
+        }
+        catch(IOException e){
+            System.out.println(e);
+        } 
+    }
+    
     /*
      * Guarda los cambios en el objeto gestorPropietario
      * en el archivo gestorPropieratio.txt y lo actualiza
@@ -97,19 +112,38 @@ public class FileManager {
     }
     
     /*
-     * Guarda los cambios en el objeto gestorVisitante
-     * en el archivo gestorVisitante.txt y lo actualiza
+     * Guarda los cambios en el objeto por parametro
+     * en el archivo correspondiente y lo actualiza
+     * @param String obj
      */
-    public void GuardarGestorVisitante(){
+    public void GuardarObjeto(String obj){
+        String path = "";
+        Object objeto = new Object();
+        switch (obj) {
+            case "gestorPropietario":
+                path = "src/json/gestorPropietario.txt";
+                objeto = this.gestorPropietario;
+                break;
+            case "gestorVisitantes":
+                path = "src/json/gestorVisitante.txt";
+                objeto = this.gestorVisitante;
+                break;
+            case "guardiaLogin":
+                path = "src/json/guardiaLogin.txt";
+                objeto = this.guardiaLogin;
+                break;
+            default:
+                break;
+        }
         //Escritura de Archivos
         FileWriter fichero = null;
         PrintWriter pw = null;
         try {
-            fichero = new FileWriter("src/json/gestorVisitante.txt");
+            fichero = new FileWriter(path);
             pw = new PrintWriter(fichero);
 
             //Conversion de clase usuario a String tipo JSON
-            String JSON = gson.toJson(this.gestorVisitante);
+            String JSON = gson.toJson(objeto);
             pw.println(JSON);
         } catch (Exception e) {
             e.printStackTrace();
@@ -128,12 +162,26 @@ public class FileManager {
 
     }
     
+    
+    
     public int getUltimoIdPropietario(){
         return this.gestorPropietario.getPropietarios().get(this.gestorPropietario.getPropietarios().size()-1).getIdPropietario();
     }
     
     public int getUltimoIdVisitante(){
         return this.gestorVisitante.getVisitantesTotales().get(this.gestorVisitante.getVisitantesTotales().size()-1).getIdVisitante();
+    }
+
+    public GestorPropietario getGestorPropietario() {
+        return gestorPropietario;
+    }
+
+    public GestorVisitante getGestorVisitante() {
+        return gestorVisitante;
+    }
+
+    public GuardiaLogin getGuardiaLogin() {
+        return guardiaLogin;
     }
     
     
