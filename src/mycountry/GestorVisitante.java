@@ -1,31 +1,34 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GestorVisitantes contiene listas con visitantes
+ * para su futura gestion. Es guardado en un archivo JSON
  */
 package mycountry;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author cetti
- */
 public class GestorVisitante {
     private ArrayList<Visitante> visitantesEsperadosEntrada;
     private ArrayList<Visitante> visitantesEsperadosSalida;
     private ArrayList<Visitante> visitantesTotales;
 
-    public GestorVisitante(ArrayList<Visitante> visitantesEsperadosEntrada, ArrayList<Visitante> visitantesEsperadosSalida, ArrayList<Visitante> visitantesTotales) {
-        this.visitantesEsperadosEntrada = visitantesEsperadosEntrada;
-        this.visitantesEsperadosSalida = visitantesEsperadosSalida;
-        this.visitantesTotales = visitantesTotales;
+    public GestorVisitante() {
+        this.visitantesEsperadosEntrada = new ArrayList<Visitante>();
+        this.visitantesEsperadosSalida = new ArrayList<Visitante>();
+        this.visitantesTotales = new ArrayList<Visitante>();
+
     }
     
+    /*Agrega Visitante pasado por parametro a los visitantes esperados para entrada y visitantes totales
+    * @param Visitante v 
+    */
     public void addVisitanteEsperadoEntrada(Visitante v){
         this.visitantesEsperadosEntrada.add(v);
         this.visitantesTotales.add(v);
     }
+    /*Agrega Visitante pasado por parametro a los visitantes esperados 
+    * para salida y lo elimina de visitantes esperados entrada.
+    * @param Visitante v 
+    */
     public void addVisitanteEsperadoSalida(Visitante v){
         this.visitantesEsperadosSalida.add(v);
         this.visitantesEsperadosEntrada.remove(v);
@@ -54,6 +57,12 @@ public class GestorVisitante {
     public void setVisitantesTotales(ArrayList<Visitante> visitantesTotales) {
         this.visitantesTotales = visitantesTotales;
     }
+
+    @Override
+    public String toString() {
+        return "GestorVisitante{" + "visitantesEsperadosEntrada=" + visitantesEsperadosEntrada + ", visitantesEsperadosSalida=" + visitantesEsperadosSalida + ", visitantesTotales=" + visitantesTotales + '}';
+    }
+    
     
 
     

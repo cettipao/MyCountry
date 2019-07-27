@@ -1,21 +1,16 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GestorPropietarios contiene listas con propietarios
+ * para su futura gestion. Es guardado en un archivo JSON
  */
 package mycountry;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author cetti
- */
 public class GestorPropietario {
     private ArrayList<Propietario> propietarios;
 
-    public GestorPropietario(ArrayList<Propietario> propietarios) {
-        this.propietarios = propietarios;
+    public GestorPropietario() {
+        this.propietarios = new ArrayList<Propietario>();
     }
 
     public ArrayList<Propietario> getPropietarios() {
