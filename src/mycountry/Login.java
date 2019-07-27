@@ -53,7 +53,7 @@ public class Login extends javax.swing.JFrame {
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
         lblLogin.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblLogin.setForeground(new java.awt.Color(51, 204, 0));
+        lblLogin.setForeground(new java.awt.Color(255, 102, 0));
         lblLogin.setText("Login");
 
         lblUser.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -96,7 +96,7 @@ public class Login extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
 
-        btnEntrar.setBackground(new java.awt.Color(51, 204, 0));
+        btnEntrar.setBackground(new java.awt.Color(255, 102, 0));
         btnEntrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnEntrar.setForeground(new java.awt.Color(255, 255, 255));
         btnEntrar.setText("Entrar");
@@ -192,7 +192,8 @@ public class Login extends javax.swing.JFrame {
         if (CompararUserPass(txtUser.getText(),txtPass.getText())) {
             System.out.println("Login successful");
             dispose();
-            //Mostrar siguiente ventana
+            Guardia guardia = new Guardia(fm);
+            guardia.show();
         } else {
             System.out.println("login failed");
 
