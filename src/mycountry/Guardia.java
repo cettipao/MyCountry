@@ -15,19 +15,19 @@ public class Guardia extends javax.swing.JFrame {
     /**
      * Creates new form Guardia
      */
-   //private Arduino ino;
+   private Arduino ino;
     private FileManager fm;
     public Guardia(FileManager fm) {
         this.fm = fm;
         fm.CrearGestorPropietario();
         fm.CrearGestorVisitante();
-        /*
+
         try {
             ino = new Arduino(fm.getGestorPropietario(), this);
         } catch (ArduinoException ex) {
             System.out.println("No se pudo establecer conexion con arduino");
         }
-        */
+
         initComponents();
     }
 
