@@ -50,6 +50,7 @@ public class Propietario extends Persona{
     public void setRfid(String rfid) {
         this.rfid = rfid;
     }
+    
 
     @Override
     public String toString() {

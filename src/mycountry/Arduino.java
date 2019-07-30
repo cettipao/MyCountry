@@ -16,28 +16,39 @@ public class Arduino {
     private SerialPortEventListener listener;
     private GestorPropietario gp;
     private Guardia guardia;
+    private AddPropietario ad;
+    private boolean addProp;
       
-    public Arduino(GestorPropietario gp, Guardia g) throws ArduinoException{
+    public Arduino(GestorPropietario gp, Guardia g, AddPropietario ad) throws ArduinoException{
         this.gp = gp;
         this.guardia = g;
+        this.ad=ad;
+        this.addProp=false;
         ino = new PanamaHitek_Arduino();
         
         listener = (SerialPortEvent spe) -> {
             try {
-                if (ino.isMessageAvailable()){
+                if (ino.isMessageAvailable()) {
                     String id = ino.printMessage();
-                    for(Propietario p: gp.getPropietarios()){
-                        System.out.println(p.getRfid()+" "+ino.printMessage());
-                        if(id.equals(p.getRfid())){
-                            System.out.println("Usuario Permitido. Propietario: "+p);
-                            guardia.propietarioEnPuerta(p);
-                            ino.sendData("p");
+                    System.out.println(addProp);
+                    if (addProp) {
+                        System.out.println(ad);
+                        System.out.println(id);
+                        ad.setTextRfid(id);
+                    } else {
+                        for (Propietario p : gp.getPropietarios()) {
+                            System.out.println(p.getRfid() + " " + ino.printMessage());
+                            if (id.equals(p.getRfid())) {
+                                System.out.println("Usuario Permitido. Propietario: " + p);
+                                guardia.propietarioEnPuerta(p);
+                                ino.sendData("p");
+                            }
                         }
                     }
 
                 }
             } catch (SerialPortException | ArduinoException ex) {
-                System.out.println("Error de Arduino: "+ ex);
+                System.out.println("Error de Arduino: " + ex);
             }
         };
         ino.arduinoRXTX("/dev/ttyACM0", 9600, listener);
@@ -45,5 +56,20 @@ public class Arduino {
     public void prenderRele() throws ArduinoException, SerialPortException{
         this.ino.sendData("p");
     }
+
+    public void setAddProp(boolean addProp) {
+        this.addProp = addProp;
+        System.out.println(this.addProp);
+    }
+
+    public AddPropietario getAd() {
+        return ad;
+    }
+
+    public void setAd(AddPropietario ad) {
+        
+        this.ad = ad;
+    }
+    
         
 }

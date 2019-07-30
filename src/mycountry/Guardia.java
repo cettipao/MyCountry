@@ -15,19 +15,21 @@ public class Guardia extends javax.swing.JFrame {
     /**
      * Creates new form Guardia
      */
-   private Arduino ino;
+    private Arduino ino;
     private FileManager fm;
+    private AddPropietario addPropietario;
     public Guardia(FileManager fm) {
+        
         this.fm = fm;
         fm.CrearGestorPropietario();
         fm.CrearGestorVisitante();
 
         try {
-            ino = new Arduino(fm.getGestorPropietario(), this);
+            ino = new Arduino(fm.getGestorPropietario(), this, addPropietario);
         } catch (ArduinoException ex) {
             System.out.println("No se pudo establecer conexion con arduino");
         }
-
+        addPropietario = new AddPropietario(ino);
         initComponents();
     }
 
@@ -248,6 +250,8 @@ public class Guardia extends javax.swing.JFrame {
 
     private void addPropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPropActionPerformed
         // TODO add your handling code here:
+        addPropietario.setVisible(true);
+        ino.setAddProp(true);
     }//GEN-LAST:event_addPropActionPerformed
 
     private void btnEscanear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscanear1ActionPerformed
