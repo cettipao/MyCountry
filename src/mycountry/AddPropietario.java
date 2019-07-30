@@ -15,12 +15,14 @@ public class AddPropietario extends javax.swing.JFrame {
      * Creates new form AddPropietario
      */
     private Arduino ino;
-    public AddPropietario(Arduino ino) {
-        this.ino = ino;
+    private FileManager fm;
+    public AddPropietario(Arduino ino, FileManager fm) {
+        this.ino = ino;//Necesita el ino para setear false el addProp
+        this.fm = fm;
         initComponents();
         this.setResizable(false);
-        confirmExit();
-        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        confirmExit();//Cuando se aprieta cerrar, la ventana se oculta y establece false a addProp
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);//Esta ventana no se cierra hasta que se cierra el programa
     }
 
     /**
@@ -35,16 +37,16 @@ public class AddPropietario extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         lblLogin = new javax.swing.JLabel();
         addProp = new javax.swing.JButton();
-        txtUser = new javax.swing.JTextField();
+        txtName = new javax.swing.JTextField();
         lblUser = new javax.swing.JLabel();
         lblUser1 = new javax.swing.JLabel();
-        txtUser1 = new javax.swing.JTextField();
+        txtSurname = new javax.swing.JTextField();
         lblUser2 = new javax.swing.JLabel();
-        txtUser2 = new javax.swing.JTextField();
+        txtDni = new javax.swing.JTextField();
         lblUser3 = new javax.swing.JLabel();
-        txtUser3 = new javax.swing.JTextField();
+        txtUser = new javax.swing.JTextField();
         lblUser4 = new javax.swing.JLabel();
-        txtUser4 = new javax.swing.JTextField();
+        txtPass = new javax.swing.JTextField();
         lblUser5 = new javax.swing.JLabel();
         txtRfid = new javax.swing.JTextField();
         lblUser6 = new javax.swing.JLabel();
@@ -71,6 +73,64 @@ public class AddPropietario extends javax.swing.JFrame {
             }
         });
 
+        txtName.setBackground(new java.awt.Color(51, 51, 51));
+        txtName.setForeground(new java.awt.Color(255, 255, 255));
+        txtName.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        txtName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNameActionPerformed(evt);
+            }
+        });
+        txtName.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNameKeyPressed(evt);
+            }
+        });
+
+        lblUser.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblUser.setForeground(new java.awt.Color(204, 204, 204));
+        lblUser.setText("Nombre del Propietario");
+
+        lblUser1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblUser1.setForeground(new java.awt.Color(204, 204, 204));
+        lblUser1.setText("Apellido del Propietario");
+
+        txtSurname.setBackground(new java.awt.Color(51, 51, 51));
+        txtSurname.setForeground(new java.awt.Color(255, 255, 255));
+        txtSurname.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        txtSurname.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSurnameActionPerformed(evt);
+            }
+        });
+        txtSurname.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSurnameKeyPressed(evt);
+            }
+        });
+
+        lblUser2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblUser2.setForeground(new java.awt.Color(204, 204, 204));
+        lblUser2.setText("Dni del Propietario");
+
+        txtDni.setBackground(new java.awt.Color(51, 51, 51));
+        txtDni.setForeground(new java.awt.Color(255, 255, 255));
+        txtDni.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        txtDni.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDniActionPerformed(evt);
+            }
+        });
+        txtDni.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDniKeyPressed(evt);
+            }
+        });
+
+        lblUser3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblUser3.setForeground(new java.awt.Color(204, 204, 204));
+        lblUser3.setText("Usename del Propietario");
+
         txtUser.setBackground(new java.awt.Color(51, 51, 51));
         txtUser.setForeground(new java.awt.Color(255, 255, 255));
         txtUser.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -85,79 +145,21 @@ public class AddPropietario extends javax.swing.JFrame {
             }
         });
 
-        lblUser.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblUser.setForeground(new java.awt.Color(204, 204, 204));
-        lblUser.setText("Nombre del Propietario");
-
-        lblUser1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblUser1.setForeground(new java.awt.Color(204, 204, 204));
-        lblUser1.setText("Apellido del Propietario");
-
-        txtUser1.setBackground(new java.awt.Color(51, 51, 51));
-        txtUser1.setForeground(new java.awt.Color(255, 255, 255));
-        txtUser1.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        txtUser1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUser1ActionPerformed(evt);
-            }
-        });
-        txtUser1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtUser1KeyPressed(evt);
-            }
-        });
-
-        lblUser2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblUser2.setForeground(new java.awt.Color(204, 204, 204));
-        lblUser2.setText("Dni del Propietario");
-
-        txtUser2.setBackground(new java.awt.Color(51, 51, 51));
-        txtUser2.setForeground(new java.awt.Color(255, 255, 255));
-        txtUser2.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        txtUser2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUser2ActionPerformed(evt);
-            }
-        });
-        txtUser2.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtUser2KeyPressed(evt);
-            }
-        });
-
-        lblUser3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        lblUser3.setForeground(new java.awt.Color(204, 204, 204));
-        lblUser3.setText("Usename del Propietario");
-
-        txtUser3.setBackground(new java.awt.Color(51, 51, 51));
-        txtUser3.setForeground(new java.awt.Color(255, 255, 255));
-        txtUser3.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        txtUser3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUser3ActionPerformed(evt);
-            }
-        });
-        txtUser3.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtUser3KeyPressed(evt);
-            }
-        });
-
         lblUser4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         lblUser4.setForeground(new java.awt.Color(204, 204, 204));
         lblUser4.setText("Password del Propietario");
 
-        txtUser4.setBackground(new java.awt.Color(51, 51, 51));
-        txtUser4.setForeground(new java.awt.Color(255, 255, 255));
-        txtUser4.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        txtUser4.addActionListener(new java.awt.event.ActionListener() {
+        txtPass.setBackground(new java.awt.Color(51, 51, 51));
+        txtPass.setForeground(new java.awt.Color(255, 255, 255));
+        txtPass.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        txtPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtUser4ActionPerformed(evt);
+                txtPassActionPerformed(evt);
             }
         });
-        txtUser4.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtUser4KeyPressed(evt);
+                txtPassKeyPressed(evt);
             }
         });
 
@@ -194,15 +196,15 @@ public class AddPropietario extends javax.swing.JFrame {
                                 .addGap(32, 32, 32)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblUser)
-                                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblUser1)
-                                    .addComponent(txtUser1, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblUser2)
-                                    .addComponent(txtUser2, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblUser3)
-                                    .addComponent(txtUser3, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblUser4)
-                                    .addComponent(txtUser4, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblUser5)
                                     .addComponent(txtRfid, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblUser6)))
@@ -223,23 +225,23 @@ public class AddPropietario extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblUser)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUser1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUser1, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUser2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUser2, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtDni, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUser3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUser3, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUser4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUser4, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblUser5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -267,8 +269,56 @@ public class AddPropietario extends javax.swing.JFrame {
 
     private void addPropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPropActionPerformed
         // TODO add your handling code here:
-
+        //Agregando Propietario
+        //Comprobando si alguno de los campos esta vacio
+        if(this.txtName.getText().equals("") || this.txtSurname.getText().equals("") || this.txtDni.getText().equals("") || this.txtUser.getText().equals("") || this.txtPass.getText().equals("") || this.txtRfid.getText().equals("")){
+            System.out.println("Alguno de los campos esta vacio. Intente otra vez");
+            return;
+        }
+        //Comprobando si el Rfid ya tiene un Propietario Asignado
+        for (Propietario p : this.fm.getGestorPropietario().getPropietarios()) {
+            if(p.getRfid().equals(this.txtRfid.getText()))
+                System.out.println("El Rfid ya contiene Owner, si desea continuar, los datos se sobrescribiran");
+               this.fm.getGestorPropietario().removePropietario(p);
+        }
+        //Agregando Propietario
+        int idPropietario = this.fm.getUltimoIdPropietario();
+        this.fm.getGestorPropietario().addPropietario(new Propietario(idPropietario,this.txtUser.getText(),this.txtPass.getText(),this.txtRfid.getText(),this.txtName.getText(),this.txtSurname.getText(),this.txtDni.getText()));
+        System.out.println("Propietario agregado con Exito");
+        //Guardar
+        this.fm.GuardarGestorPropietario();
+        //Borrar txt
+        this.txtName.setText("");
+        this.txtSurname.setText("");
+        this.txtDni.setText("");
+        this.txtUser.setText("");
+        this.txtPass.setText("");
+        this.txtRfid.setText("");
     }//GEN-LAST:event_addPropActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameKeyPressed
+
+    private void txtSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSurnameActionPerformed
+
+    private void txtSurnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSurnameKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSurnameKeyPressed
+
+    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniActionPerformed
+
+    private void txtDniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniKeyPressed
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
         // TODO add your handling code here:
@@ -278,37 +328,13 @@ public class AddPropietario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserKeyPressed
 
-    private void txtUser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUser1ActionPerformed
+    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUser1ActionPerformed
+    }//GEN-LAST:event_txtPassActionPerformed
 
-    private void txtUser1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUser1KeyPressed
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtUser1KeyPressed
-
-    private void txtUser2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUser2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUser2ActionPerformed
-
-    private void txtUser2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUser2KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUser2KeyPressed
-
-    private void txtUser3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUser3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUser3ActionPerformed
-
-    private void txtUser3KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUser3KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUser3KeyPressed
-
-    private void txtUser4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUser4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUser4ActionPerformed
-
-    private void txtUser4KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUser4KeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUser4KeyPressed
+    }//GEN-LAST:event_txtPassKeyPressed
 
     private void txtRfidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRfidActionPerformed
         // TODO add your handling code here:
@@ -341,11 +367,11 @@ public class AddPropietario extends javax.swing.JFrame {
     private javax.swing.JLabel lblUser4;
     private javax.swing.JLabel lblUser5;
     private javax.swing.JLabel lblUser6;
+    private javax.swing.JTextField txtDni;
+    private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPass;
     private javax.swing.JTextField txtRfid;
+    private javax.swing.JTextField txtSurname;
     private javax.swing.JTextField txtUser;
-    private javax.swing.JTextField txtUser1;
-    private javax.swing.JTextField txtUser2;
-    private javax.swing.JTextField txtUser3;
-    private javax.swing.JTextField txtUser4;
     // End of variables declaration//GEN-END:variables
 }

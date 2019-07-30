@@ -22,7 +22,6 @@ public class Arduino {
     public Arduino(GestorPropietario gp, Guardia g, AddPropietario ad) throws ArduinoException{
         this.gp = gp;
         this.guardia = g;
-        this.ad=ad;
         this.addProp=false;
         ino = new PanamaHitek_Arduino();
         
@@ -30,14 +29,10 @@ public class Arduino {
             try {
                 if (ino.isMessageAvailable()) {
                     String id = ino.printMessage();
-                    System.out.println(addProp);
                     if (addProp) {
-                        System.out.println(ad);
-                        System.out.println(id);
-                        ad.setTextRfid(id);
+                        guardia.setTxtNewProp(id);
                     } else {
                         for (Propietario p : gp.getPropietarios()) {
-                            System.out.println(p.getRfid() + " " + ino.printMessage());
                             if (id.equals(p.getRfid())) {
                                 System.out.println("Usuario Permitido. Propietario: " + p);
                                 guardia.propietarioEnPuerta(p);
@@ -59,7 +54,7 @@ public class Arduino {
 
     public void setAddProp(boolean addProp) {
         this.addProp = addProp;
-        System.out.println(this.addProp);
+        
     }
 
     public AddPropietario getAd() {

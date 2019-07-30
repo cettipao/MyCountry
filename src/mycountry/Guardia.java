@@ -25,11 +25,11 @@ public class Guardia extends javax.swing.JFrame {
         fm.CrearGestorVisitante();
 
         try {
-            ino = new Arduino(fm.getGestorPropietario(), this, addPropietario);
+            ino = new Arduino(fm.getGestorPropietario(), this, addPropietario);//Instancio Ino (Necesita addprop)
         } catch (ArduinoException ex) {
             System.out.println("No se pudo establecer conexion con arduino");
         }
-        addPropietario = new AddPropietario(ino);
+        addPropietario = new AddPropietario(ino,fm);//Instancio addProp (Necesita ino)
         initComponents();
     }
 
@@ -265,7 +265,11 @@ public class Guardia extends javax.swing.JFrame {
         this.lblTipoGreso.setText("");
         this.lblPropietarioVisitante.setText("propietario");
     }
-    
+
+    public void setTxtNewProp(String id) {
+        addPropietario.setTextRfid(id);
+    }
+
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

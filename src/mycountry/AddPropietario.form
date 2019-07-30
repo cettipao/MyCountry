@@ -60,15 +60,15 @@
                                   <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="lblUser" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtUser" min="-2" pref="253" max="-2" attributes="0"/>
+                                      <Component id="txtName" min="-2" pref="253" max="-2" attributes="0"/>
                                       <Component id="lblUser1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtUser1" min="-2" pref="253" max="-2" attributes="0"/>
+                                      <Component id="txtSurname" min="-2" pref="253" max="-2" attributes="0"/>
                                       <Component id="lblUser2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtUser2" min="-2" pref="253" max="-2" attributes="0"/>
+                                      <Component id="txtDni" min="-2" pref="253" max="-2" attributes="0"/>
                                       <Component id="lblUser3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtUser3" min="-2" pref="253" max="-2" attributes="0"/>
+                                      <Component id="txtUser" min="-2" pref="253" max="-2" attributes="0"/>
                                       <Component id="lblUser4" min="-2" max="-2" attributes="0"/>
-                                      <Component id="txtUser4" min="-2" pref="253" max="-2" attributes="0"/>
+                                      <Component id="txtPass" min="-2" pref="253" max="-2" attributes="0"/>
                                       <Component id="lblUser5" min="-2" max="-2" attributes="0"/>
                                       <Component id="txtRfid" min="-2" pref="253" max="-2" attributes="0"/>
                                       <Component id="lblUser6" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -98,23 +98,23 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="lblUser" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="txtUser" min="-2" pref="21" max="-2" attributes="0"/>
+                  <Component id="txtName" min="-2" pref="21" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="lblUser1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="txtUser1" min="-2" pref="21" max="-2" attributes="0"/>
+                  <Component id="txtSurname" min="-2" pref="21" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="lblUser2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="txtUser2" min="-2" pref="21" max="-2" attributes="0"/>
+                  <Component id="txtDni" min="-2" pref="21" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="lblUser3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="txtUser3" min="-2" pref="21" max="-2" attributes="0"/>
+                  <Component id="txtUser" min="-2" pref="21" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="lblUser4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Component id="txtUser4" min="-2" pref="21" max="-2" attributes="0"/>
+                  <Component id="txtPass" min="-2" pref="21" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Component id="lblUser5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -160,7 +160,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addPropActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtUser">
+        <Component class="javax.swing.JTextField" name="txtName">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -175,8 +175,8 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUserKeyPressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtNameActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtNameKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblUser">
@@ -201,7 +201,7 @@
             <Property name="text" type="java.lang.String" value="Apellido del Propietario"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtUser1">
+        <Component class="javax.swing.JTextField" name="txtSurname">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -216,8 +216,8 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUser1ActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUser1KeyPressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtSurnameActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtSurnameKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblUser2">
@@ -231,7 +231,7 @@
             <Property name="text" type="java.lang.String" value="Dni del Propietario"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtUser2">
+        <Component class="javax.swing.JTextField" name="txtDni">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -246,8 +246,8 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUser2ActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUser2KeyPressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDniActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtDniKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblUser3">
@@ -261,7 +261,7 @@
             <Property name="text" type="java.lang.String" value="Usename del Propietario"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtUser3">
+        <Component class="javax.swing.JTextField" name="txtUser">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -276,8 +276,8 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUser3ActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUser3KeyPressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUserKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblUser4">
@@ -291,7 +291,7 @@
             <Property name="text" type="java.lang.String" value="Password del Propietario"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtUser4">
+        <Component class="javax.swing.JTextField" name="txtPass">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="33" red="33" type="rgb"/>
@@ -306,8 +306,8 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUser4ActionPerformed"/>
-            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtUser4KeyPressed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPassActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPassKeyPressed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblUser5">
