@@ -42,7 +42,7 @@ public class Guardia extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         lblLogin = new javax.swing.JLabel();
-        btnEscanear = new javax.swing.JButton();
+        addProp = new javax.swing.JButton();
         lblInfoPersona = new javax.swing.JLabel();
         lblTipoIngresante = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
@@ -56,6 +56,8 @@ public class Guardia extends javax.swing.JFrame {
         lblPropietarioVisitante = new javax.swing.JLabel();
         lblInfoPersona11 = new javax.swing.JLabel();
         lblInfoPersona12 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        btnEscanear1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -66,14 +68,14 @@ public class Guardia extends javax.swing.JFrame {
         lblLogin.setForeground(new java.awt.Color(255, 102, 0));
         lblLogin.setText("Sistema Guardia");
 
-        btnEscanear.setBackground(new java.awt.Color(255, 102, 0));
-        btnEscanear.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        btnEscanear.setForeground(new java.awt.Color(255, 255, 255));
-        btnEscanear.setText("Escanear QR");
-        btnEscanear.setBorder(null);
-        btnEscanear.addActionListener(new java.awt.event.ActionListener() {
+        addProp.setBackground(new java.awt.Color(255, 102, 0));
+        addProp.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        addProp.setForeground(new java.awt.Color(255, 255, 255));
+        addProp.setText("Agregar Propietario");
+        addProp.setBorder(null);
+        addProp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEscanearActionPerformed(evt);
+                addPropActionPerformed(evt);
             }
         });
 
@@ -129,6 +131,21 @@ public class Guardia extends javax.swing.JFrame {
         lblInfoPersona12.setForeground(new java.awt.Color(204, 204, 204));
         lblInfoPersona12.setText("00:00:00");
 
+        jButton1.setBackground(new java.awt.Color(30, 30, 30));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mycountry/conf.png"))); // NOI18N
+        jButton1.setBorder(null);
+
+        btnEscanear1.setBackground(new java.awt.Color(255, 102, 0));
+        btnEscanear1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnEscanear1.setForeground(new java.awt.Color(255, 255, 255));
+        btnEscanear1.setText("Escanear QR");
+        btnEscanear1.setBorder(null);
+        btnEscanear1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEscanear1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -153,54 +170,66 @@ public class Guardia extends javax.swing.JFrame {
                                 .addComponent(lblPropAnf)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(lblPropietarioVisitante, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblDni, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 74, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblDni, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap())))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(lblInfoPersona12)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(lblInfoPersona11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEscanear, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(111, 111, 111)
+                        .addComponent(addProp, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnEscanear1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21)
-                .addComponent(lblInfoPersona)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 27, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTipoIngresante)
-                            .addComponent(lblNombre)
-                            .addComponent(lblName))
                         .addGap(18, 18, 18)
+                        .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21)
+                .addComponent(lblInfoPersona)
+                .addGap(18, 27, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTipoIngresante)
+                    .addComponent(lblNombre)
+                    .addComponent(lblName))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTipoGreso)
+                    .addComponent(lblApellido)
+                    .addComponent(lblSurname))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPropAnf)
+                    .addComponent(lblDocumento)
+                    .addComponent(lblDni)
+                    .addComponent(lblPropietarioVisitante))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblTipoGreso)
-                            .addComponent(lblApellido)
-                            .addComponent(lblSurname))
-                        .addGap(21, 21, 21)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPropAnf)
-                            .addComponent(lblDocumento)
-                            .addComponent(lblDni)
-                            .addComponent(lblPropietarioVisitante))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblInfoPersona12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblInfoPersona11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnEscanear, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))))
+                            .addComponent(btnEscanear1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addProp, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblInfoPersona12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblInfoPersona11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -217,9 +246,13 @@ public class Guardia extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnEscanearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscanearActionPerformed
+    private void addPropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPropActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnEscanearActionPerformed
+    }//GEN-LAST:event_addPropActionPerformed
+
+    private void btnEscanear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscanear1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnEscanear1ActionPerformed
     public void propietarioEnPuerta(Propietario p){
         this.lblName.setText(p.getNombre());
         this.lblSurname.setText(p.getApellido());
@@ -228,10 +261,13 @@ public class Guardia extends javax.swing.JFrame {
         this.lblTipoGreso.setText("");
         this.lblPropietarioVisitante.setText("propietario");
     }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnEscanear;
+    private javax.swing.JButton addProp;
+    private javax.swing.JButton btnEscanear1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblApellido;
     private javax.swing.JLabel lblDni;
