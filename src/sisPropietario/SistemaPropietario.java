@@ -53,6 +53,7 @@ public class SistemaPropietario extends javax.swing.JFrame {
         lblLogin1 = new javax.swing.JLabel();
         txtDni = new javax.swing.JTextField();
         txtSurname = new javax.swing.JTextField();
+        btnInvitar1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -121,7 +122,7 @@ public class SistemaPropietario extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(28, 28, 28)
-                .addComponent(lblProp, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                .addComponent(lblProp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(17, 17, 17))
         );
         jPanel2Layout.setVerticalGroup(
@@ -164,33 +165,47 @@ public class SistemaPropietario extends javax.swing.JFrame {
             }
         });
 
+        btnInvitar1.setBackground(new java.awt.Color(255, 255, 204));
+        btnInvitar1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnInvitar1.setForeground(new java.awt.Color(153, 153, 153));
+        btnInvitar1.setText("Cerrar Sesion");
+        btnInvitar1.setBorder(null);
+        btnInvitar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInvitar1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                            .addComponent(lblUser)
-                            .addComponent(txtName)
-                            .addComponent(lblPass)
-                            .addComponent(jSeparator2)
-                            .addComponent(lblPass1)
-                            .addComponent(jSeparator3)
-                            .addComponent(lblLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                            .addComponent(txtDni)
-                            .addComponent(txtSurname)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(btnInvitar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGap(25, 25, 25)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                                .addComponent(lblUser)
+                                .addComponent(txtName)
+                                .addComponent(lblPass)
+                                .addComponent(jSeparator2)
+                                .addComponent(lblPass1)
+                                .addComponent(jSeparator3)
+                                .addComponent(lblLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                                .addComponent(txtDni)
+                                .addComponent(txtSurname))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(101, 101, 101)
-                        .addComponent(jLabel4))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnInvitar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jLabel4)
+                        .addGap(29, 29, 29)
+                        .addComponent(btnInvitar1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -219,7 +234,9 @@ public class SistemaPropietario extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(btnInvitar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                .addComponent(jLabel4)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(btnInvitar1))
                 .addContainerGap())
         );
 
@@ -274,6 +291,13 @@ public class SistemaPropietario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_txtSurnameKeyPressed
 
+    private void btnInvitar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInvitar1ActionPerformed
+        // TODO add your handling code here:
+        LoginSisPropietario loginSisPropietario = new LoginSisPropietario();
+        loginSisPropietario.show();
+        dispose();
+    }//GEN-LAST:event_btnInvitar1ActionPerformed
+
     private void invitar(){
         //Actualiza lista de invitados
         fm.CrearGestorVisitante();
@@ -309,6 +333,7 @@ public class SistemaPropietario extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInvitar;
+    private javax.swing.JButton btnInvitar1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
