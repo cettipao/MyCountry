@@ -22,5 +22,8 @@ public class GestorPropietario {
     }
     public void addPropietario(Propietario p){
         this.propietarios.add(p);
-    }    
+    }  
+    public void removePropietario(Propietario p){
+        this.propietarios.remove(p);
+    }
 }
