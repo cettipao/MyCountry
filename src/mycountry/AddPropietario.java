@@ -5,6 +5,8 @@
  */
 package mycountry;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author cetti
@@ -269,7 +271,95 @@ public class AddPropietario extends javax.swing.JFrame {
 
     private void addPropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPropActionPerformed
         // TODO add your handling code here:
-        //Agregando Propietario
+        agregarPropietario();
+    }//GEN-LAST:event_addPropActionPerformed
+
+    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNameActionPerformed
+
+    private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
+
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            agregarPropietario();
+        }
+        
+    }//GEN-LAST:event_txtNameKeyPressed
+
+    private void txtSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurnameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSurnameActionPerformed
+
+    private void txtSurnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSurnameKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            agregarPropietario();
+        }
+        
+    }//GEN-LAST:event_txtSurnameKeyPressed
+
+    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDniActionPerformed
+
+    private void txtDniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            agregarPropietario();
+        }
+        
+    }//GEN-LAST:event_txtDniKeyPressed
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUserActionPerformed
+
+    private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            agregarPropietario();
+        }
+        
+    }//GEN-LAST:event_txtUserKeyPressed
+
+    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassActionPerformed
+
+    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            agregarPropietario();
+        }
+        
+    }//GEN-LAST:event_txtPassKeyPressed
+
+    private void txtRfidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRfidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtRfidActionPerformed
+
+    private void txtRfidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRfidKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            agregarPropietario();
+        }
+        
+    }//GEN-LAST:event_txtRfidKeyPressed
+
+   public void setTextRfid(String rfid){
+       this.txtRfid.setText(rfid);
+   }
+   private void confirmExit(){
+       this.addWindowListener(new java.awt.event.WindowAdapter() {
+    @Override
+    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+        ino.setAddProp(false);
+    }
+});
+   }
+   private void agregarPropietario(){
+       //Agregando Propietario
         //Comprobando si alguno de los campos esta vacio
         if(this.txtName.getText().equals("") || this.txtSurname.getText().equals("") || this.txtDni.getText().equals("") || this.txtUser.getText().equals("") || this.txtPass.getText().equals("") || this.txtRfid.getText().equals("")){
             System.out.println("Alguno de los campos esta vacio. Intente otra vez");
@@ -294,66 +384,6 @@ public class AddPropietario extends javax.swing.JFrame {
         this.txtUser.setText("");
         this.txtPass.setText("");
         this.txtRfid.setText("");
-    }//GEN-LAST:event_addPropActionPerformed
-
-    private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameActionPerformed
-
-    private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNameKeyPressed
-
-    private void txtSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurnameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSurnameActionPerformed
-
-    private void txtSurnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSurnameKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtSurnameKeyPressed
-
-    private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDniActionPerformed
-
-    private void txtDniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDniKeyPressed
-
-    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserActionPerformed
-
-    private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtUserKeyPressed
-
-    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPassActionPerformed
-
-    private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtPassKeyPressed
-
-    private void txtRfidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRfidActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRfidActionPerformed
-
-    private void txtRfidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRfidKeyPressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtRfidKeyPressed
-
-   public void setTextRfid(String rfid){
-       this.txtRfid.setText(rfid);
-   }
-   private void confirmExit(){
-       this.addWindowListener(new java.awt.event.WindowAdapter() {
-    @Override
-    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-        ino.setAddProp(false);
-    }
-});
    }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
