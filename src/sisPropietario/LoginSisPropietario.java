@@ -228,15 +228,18 @@ public class LoginSisPropietario extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnEntrarActionPerformed
     private void logueoProp(){
+        //Actualiza Propietarios
         fm.CrearGestorPropietario();
         //Comprueba si alguno de los campos esta vacio
-        if("".equals(this.txtUser.getText()) && "".equals(this.txtPass.getText())){
+        if("".equals(this.txtUser.getText()) || "".equals(this.txtPass.getText())){
             return;
         }
         for(Propietario p:fm.getGestorPropietario().getPropietarios()){
             if(p.getUsuario().equals(this.txtUser.getText()) && p.getPassword().equals(this.txtPass.getText())){
                 System.out.println("Propietario Ingresado: "+p);
-                SistemaPropietario sistemaPropietario = new SistemaPropietario();
+                SistemaPropietario sistemaPropietario = new SistemaPropietario(p,fm);
+                sistemaPropietario.show();
+                dispose();
                 return;
             }
         }

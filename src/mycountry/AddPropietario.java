@@ -376,7 +376,7 @@ public class AddPropietario extends javax.swing.JFrame {
         this.fm.getGestorPropietario().addPropietario(new Propietario(idPropietario,this.txtUser.getText(),this.txtPass.getText(),this.txtRfid.getText(),this.txtName.getText(),this.txtSurname.getText(),this.txtDni.getText()));
         System.out.println("Propietario agregado con Exito");
         //Guardar
-        this.fm.GuardarGestorPropietario();
+        this.fm.guardarObjeto("gestorPropietario");
         //Borrar txt
         this.txtName.setText("");
         this.txtSurname.setText("");
