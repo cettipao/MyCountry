@@ -306,6 +306,11 @@ public class SistemaPropietario extends javax.swing.JFrame {
         if(this.txtDni.getText().equals("") || this.txtSurname.getText().equals("") || this.txtName.getText().equals("")){
             return;
         }
+        //Comprueba si el DNI es valido
+        if(this.txtDni.getText().length()!=8){
+            //Dni no es valido
+            return;
+        }
         //Comprueba si hay algun invitado esperado de mismo DNI del mismo propietario
         for (Visitante v:fm.getGestorVisitante().getVisitantesEsperadosEntrada()){
             if(v.getDNI().equals(this.txtDni.getText()) && v.getPropietario().getIdPropietario() == this.propietario.getIdPropietario()){

@@ -365,6 +365,11 @@ public class AddPropietario extends javax.swing.JFrame {
             System.out.println("Alguno de los campos esta vacio. Intente otra vez");
             return;
         }
+        //Comprueba si el DNI es valido
+        if(this.txtDni.getText().length()!=8){
+            //Dni no es valido
+            return;
+        }
         //Comprobando si el Rfid ya tiene un Propietario Asignado
         for (Propietario p : this.fm.getGestorPropietario().getPropietarios()) {
             if(p.getRfid().equals(this.txtRfid.getText()))
