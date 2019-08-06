@@ -3,26 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mycountry;
+package sisPropietario;
 
-import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import javax.swing.JOptionPane;
+import mycountry.FileManager;
+import mycountry.Propietario;
 
 /**
  *
  * @author cetti
  */
-public class Login extends javax.swing.JFrame {
+public class LoginSisPropietario extends javax.swing.JFrame {
+
     /**
-     * Creates new form Login
+     * Creates new form LoginSisPropietario
      */
     private FileManager fm;
-    public Login() {
+    public LoginSisPropietario() {
         fm = new FileManager();
-        fm.CrearGuardiaLogin();
         initComponents();
+        setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+
     }
 
     /**
@@ -43,27 +45,31 @@ public class Login extends javax.swing.JFrame {
         txtPass = new javax.swing.JPasswordField();
         jSeparator2 = new javax.swing.JSeparator();
         btnEntrar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sala de Chat | Login");
-        setBackground(new java.awt.Color(20, 20, 20));
-        setResizable(false);
 
-        jPanel1.setBackground(new java.awt.Color(30, 30, 30));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
+        jPanel1.setMinimumSize(new java.awt.Dimension(282, 484));
+        jPanel1.setPreferredSize(new java.awt.Dimension(282, 484));
 
-        lblLogin.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblLogin.setFont(new java.awt.Font("Arial", 1, 20)); // NOI18N
         lblLogin.setForeground(new java.awt.Color(255, 102, 0));
-        lblLogin.setText("Login");
+        lblLogin.setText("Login Propietario");
 
         lblUser.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblUser.setForeground(new java.awt.Color(30, 30, 30));
         lblUser.setText("Username");
 
-        jSeparator1.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator1.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator1.setBackground(new java.awt.Color(30, 30, 30));
+        jSeparator1.setForeground(new java.awt.Color(30, 30, 30));
 
-        txtUser.setBackground(new java.awt.Color(30, 30, 30));
-        txtUser.setForeground(new java.awt.Color(255, 255, 255));
+        txtUser.setBackground(new java.awt.Color(255, 255, 204));
+        txtUser.setForeground(new java.awt.Color(30, 30, 30));
         txtUser.setBorder(null);
         txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -77,10 +83,11 @@ public class Login extends javax.swing.JFrame {
         });
 
         lblPass.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblPass.setForeground(new java.awt.Color(30, 30, 30));
         lblPass.setText("Password");
 
-        txtPass.setBackground(new java.awt.Color(30, 30, 30));
-        txtPass.setForeground(new java.awt.Color(255, 255, 255));
+        txtPass.setBackground(new java.awt.Color(255, 255, 204));
+        txtPass.setForeground(new java.awt.Color(30, 30, 30));
         txtPass.setBorder(null);
         txtPass.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,8 +100,8 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jSeparator2.setBackground(new java.awt.Color(255, 255, 255));
-        jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
+        jSeparator2.setBackground(new java.awt.Color(30, 30, 30));
+        jSeparator2.setForeground(new java.awt.Color(30, 30, 30));
 
         btnEntrar.setBackground(new java.awt.Color(255, 102, 0));
         btnEntrar.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -107,22 +114,46 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("or");
+
+        jLabel2.setText("¿Eres propietario?");
+
+        jLabel3.setText("Comunicate con tu Guardia");
+
+        jLabel4.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel4.setText("MyContry");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jSeparator1)
-                    .addComponent(lblUser)
-                    .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUser)
-                    .addComponent(lblPass)
-                    .addComponent(txtPass, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                    .addComponent(jSeparator2)
-                    .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(133, 133, 133)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(74, 74, 74)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                                .addComponent(lblUser)
+                                .addComponent(txtUser)
+                                .addComponent(lblPass)
+                                .addComponent(txtPass)
+                                .addComponent(jSeparator2)
+                                .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addComponent(jLabel3))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(jLabel4)))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,19 +169,27 @@ public class Login extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(lblPass)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnEntrar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -164,58 +203,55 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserActionPerformed
 
+    private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            logueoProp();
+        }
+        
+    }//GEN-LAST:event_txtUserKeyPressed
+
     private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtPassActionPerformed
 
-    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
-        // TODO add your handling code here:
-        logueo();
-    }//GEN-LAST:event_btnEntrarActionPerformed
-
     private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
         // TODO add your handling code here:
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            System.out.println("ENTER");
-            logueo();
+            logueoProp();
         }
     }//GEN-LAST:event_txtPassKeyPressed
 
-    private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
+    private void btnEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntrarActionPerformed
         // TODO add your handling code here:
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
-            logueo();
+        logueoProp();
+        
+    }//GEN-LAST:event_btnEntrarActionPerformed
+    private void logueoProp(){
+        //Actualiza Propietarios
+        fm.CrearGestorPropietario();
+        //Comprueba si alguno de los campos esta vacio
+        if("".equals(this.txtUser.getText()) || "".equals(this.txtPass.getText())){
+            return;
         }
-    }//GEN-LAST:event_txtUserKeyPressed
-
-    private void logueo(){
-        if (CompararUserPass(txtUser.getText(),txtPass.getText())) {
-            System.out.println("Login successful");
-            dispose();
-            Guardia guardia = new Guardia(fm);
-            guardia.show();
-        } else {
-            System.out.println("login failed");
-
-            int seleccion = JOptionPane.showOptionDialog(
-                    null,
-                    "Login Incorrecto",
-                    "Login de Sala de Chat",
-                    JOptionPane.YES_NO_CANCEL_OPTION,
-                    JOptionPane.ERROR_MESSAGE,
-                    null,
-                    new Object[]{"Reintentar"},
-                    "opcion 1");
+        for(Propietario p:fm.getGestorPropietario().getPropietarios()){
+            if(p.getUsuario().equals(this.txtUser.getText()) && p.getPassword().equals(this.txtPass.getText())){
+                System.out.println("Propietario Ingresado: "+p);
+                SistemaPropietario sistemaPropietario = new SistemaPropietario(p,fm);
+                sistemaPropietario.show();
+                dispose();
+                return;
+            }
         }
+        System.out.println("Username o Password Incorrectos");
     }
-    
-    public boolean CompararUserPass(String user,String pass){
-        return fm.getGuardiaLogin().getUsername().equals(user) && fm.getGuardiaLogin().getPassword().equals(pass);
-    }
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnEntrar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

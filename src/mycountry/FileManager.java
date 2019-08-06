@@ -79,44 +79,13 @@ public class FileManager {
         } 
     }
     
-    /*
-     * Guarda los cambios en el objeto gestorPropietario
-     * en el archivo gestorPropieratio.txt y lo actualiza
-     */
-    public void GuardarGestorPropietario(){
-        //Escritura de Archivos
-        FileWriter fichero = null;
-        PrintWriter pw = null;
-        try {
-            fichero = new FileWriter("src/json/gestorPropietario.txt");
-            pw = new PrintWriter(fichero);
-
-            //Conversion de clase usuario a String tipo JSON
-            String JSON = gson.toJson(this.gestorPropietario);
-            pw.println(JSON);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                // Nuevamente aprovechamos el finally para 
-                // asegurarnos que se cierra el fichero.
-                if (null != fichero) {
-                    fichero.close();
-                }
-            } catch (Exception e2) {
-                e2.printStackTrace();
-            }
-        }
-        this.CrearGestorPropietario();
-
-    }
     
     /*
      * Guarda los cambios en el objeto por parametro
      * en el archivo correspondiente y lo actualiza
      * @param String obj
      */
-    public void GuardarObjeto(String obj){
+    public void guardarObjeto(String obj){
         String path = "";
         Object objeto = new Object();
         switch (obj) {

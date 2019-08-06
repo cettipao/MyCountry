@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/cetti/colegio/Programacion%20II/Programacion%202/Proyecto%202/MyCountry/src/mycountry/Propietario.java</file>
-            <file>file:/home/cetti/colegio/Programacion%20II/Programacion%202/Proyecto%202/MyCountry/src/mycountry/Arduino.java</file>
-            <file>file:/home/cetti/colegio/Programacion%20II/Programacion%202/Proyecto%202/MyCountry/src/mycountry/FileManager.java</file>
             <file>file:/home/cetti/colegio/Programacion%20II/Programacion%202/Proyecto%202/MyCountry/src/mycountry/MyCountry.java</file>
-            <file>file:/home/cetti/colegio/Programacion%20II/Programacion%202/Proyecto%202/MyCountry/src/mycountry/Guardia.java</file>
-            <file>file:/home/cetti/colegio/Programacion%20II/Programacion%202/Proyecto%202/MyCountry/src/mycountry/AddPropietario.java</file>
-            <file>file:/home/cetti/colegio/Programacion%20II/Programacion%202/Proyecto%202/MyCountry/src/mycountry/Login.java</file>
-            <file>file:/home/cetti/colegio/Programacion%20II/Programacion%202/Proyecto%202/MyCountry/src/mycountry/GestorPropietario.java</file>
+            <file>file:/home/cetti/colegio/Programacion%20II/Programacion%202/Proyecto%202/MyCountry/src/sisPropietario/LoginSisPropietario.java</file>
+            <file>file:/home/cetti/colegio/Programacion%20II/Programacion%202/Proyecto%202/MyCountry/src/sisPropietario/SistemaPropietario.java</file>
         </group>
     </open-files>
 </project-private>

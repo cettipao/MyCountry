@@ -5,6 +5,8 @@
  */
 package mycountry;
 
+import java.awt.event.KeyEvent;
+
 /**
  *
  * @author cetti
@@ -269,31 +271,7 @@ public class AddPropietario extends javax.swing.JFrame {
 
     private void addPropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPropActionPerformed
         // TODO add your handling code here:
-        //Agregando Propietario
-        //Comprobando si alguno de los campos esta vacio
-        if(this.txtName.getText().equals("") || this.txtSurname.getText().equals("") || this.txtDni.getText().equals("") || this.txtUser.getText().equals("") || this.txtPass.getText().equals("") || this.txtRfid.getText().equals("")){
-            System.out.println("Alguno de los campos esta vacio. Intente otra vez");
-            return;
-        }
-        //Comprobando si el Rfid ya tiene un Propietario Asignado
-        for (Propietario p : this.fm.getGestorPropietario().getPropietarios()) {
-            if(p.getRfid().equals(this.txtRfid.getText()))
-                System.out.println("El Rfid ya contiene Owner, si desea continuar, los datos se sobrescribiran");
-               this.fm.getGestorPropietario().removePropietario(p);
-        }
-        //Agregando Propietario
-        int idPropietario = this.fm.getUltimoIdPropietario();
-        this.fm.getGestorPropietario().addPropietario(new Propietario(idPropietario,this.txtUser.getText(),this.txtPass.getText(),this.txtRfid.getText(),this.txtName.getText(),this.txtSurname.getText(),this.txtDni.getText()));
-        System.out.println("Propietario agregado con Exito");
-        //Guardar
-        this.fm.GuardarGestorPropietario();
-        //Borrar txt
-        this.txtName.setText("");
-        this.txtSurname.setText("");
-        this.txtDni.setText("");
-        this.txtUser.setText("");
-        this.txtPass.setText("");
-        this.txtRfid.setText("");
+        agregarPropietario();
     }//GEN-LAST:event_addPropActionPerformed
 
     private void txtNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNameActionPerformed
@@ -301,7 +279,12 @@ public class AddPropietario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtNameActionPerformed
 
     private void txtNameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyPressed
+
         // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            agregarPropietario();
+        }
+        
     }//GEN-LAST:event_txtNameKeyPressed
 
     private void txtSurnameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSurnameActionPerformed
@@ -310,6 +293,10 @@ public class AddPropietario extends javax.swing.JFrame {
 
     private void txtSurnameKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSurnameKeyPressed
         // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            agregarPropietario();
+        }
+        
     }//GEN-LAST:event_txtSurnameKeyPressed
 
     private void txtDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDniActionPerformed
@@ -318,6 +305,10 @@ public class AddPropietario extends javax.swing.JFrame {
 
     private void txtDniKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDniKeyPressed
         // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            agregarPropietario();
+        }
+        
     }//GEN-LAST:event_txtDniKeyPressed
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
@@ -326,6 +317,10 @@ public class AddPropietario extends javax.swing.JFrame {
 
     private void txtUserKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyPressed
         // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            agregarPropietario();
+        }
+        
     }//GEN-LAST:event_txtUserKeyPressed
 
     private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
@@ -334,6 +329,10 @@ public class AddPropietario extends javax.swing.JFrame {
 
     private void txtPassKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyPressed
         // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            agregarPropietario();
+        }
+        
     }//GEN-LAST:event_txtPassKeyPressed
 
     private void txtRfidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRfidActionPerformed
@@ -342,18 +341,71 @@ public class AddPropietario extends javax.swing.JFrame {
 
     private void txtRfidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtRfidKeyPressed
         // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            agregarPropietario();
+        }
+        
     }//GEN-LAST:event_txtRfidKeyPressed
 
    public void setTextRfid(String rfid){
-       this.txtRfid.setText(rfid);
-   }
-   private void confirmExit(){
-       this.addWindowListener(new java.awt.event.WindowAdapter() {
-    @Override
-    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-        ino.setAddProp(false);
+        this.txtRfid.setText(rfid);
     }
-});
+
+    private void confirmExit() {
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                ino.setAddProp(false);
+                //Borrar txt
+                txtName.setText("");
+                txtSurname.setText("");
+                txtDni.setText("");
+                txtUser.setText("");
+                txtPass.setText("");
+                txtRfid.setText("");
+            }
+        });
+    }
+
+   private void agregarPropietario(){
+       System.out.println("RFID: " + this.txtRfid.getText());
+       String rfid = this.txtRfid.getText();
+       System.out.println("Previo a Realizar cambios");
+       System.out.println(fm.getGestorPropietario().toString());
+       //Agregando Propietario
+        //Comprobando si alguno de los campos esta vacio
+        if(this.txtName.getText().equals("") || this.txtSurname.getText().equals("") || this.txtDni.getText().equals("") || this.txtUser.getText().equals("") || this.txtPass.getText().equals("") || this.txtRfid.getText().equals("")){
+            System.out.println("Alguno de los campos esta vacio. Intente otra vez");
+            return;
+        }
+        //Comprueba si el DNI es valido
+        if(this.txtDni.getText().length()!=8){
+            //Dni no es valido
+            return;
+        }
+       //Comprobando si el Rfid ya tiene un Propietario Asignado
+       for (Propietario p : this.fm.getGestorPropietario().getPropietarios()) {
+           if (p.getRfid().equals(this.txtRfid.getText())) {
+               System.out.println("El Rfid ya contiene Owner, si desea continuar, los datos se sobrescribiran");
+               this.fm.getGestorPropietario().removePropietario(p);
+           }
+           
+       }
+        //Agregando Propietario
+        int idPropietario = this.fm.getUltimoIdPropietario() + 1;
+        this.fm.getGestorPropietario().addPropietario(new Propietario(idPropietario,this.txtUser.getText(),this.txtPass.getText(),this.txtRfid.getText(),this.txtName.getText(),this.txtSurname.getText(),this.txtDni.getText()));
+        System.out.println("Propietario agregado con Exito");
+        //Guardar
+        System.out.println("Despues de Cambios");
+        System.out.println(fm.getGestorPropietario().toString());
+        this.fm.guardarObjeto("gestorPropietario");
+        //Borrar txt
+        this.txtName.setText("");
+        this.txtSurname.setText("");
+        this.txtDni.setText("");
+        this.txtUser.setText("");
+        this.txtPass.setText("");
+        this.txtRfid.setText("");
    }
    
     // Variables declaration - do not modify//GEN-BEGIN:variables
