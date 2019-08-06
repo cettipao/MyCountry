@@ -1,1 +1,1 @@
-{"propietarios":[{"idPropietario":0,"usuario":"cettipao","password":"123","rfid":"9A 24 5A 89","nombre":"Paolo","apellido":"Cetti","DNI":"44739152"},{"idPropietario":0,"usuario":"Thats","password":"123","rfid":"A7 08 92 B9","nombre":"Matias","apellido":"Ninci","DNI":"44579382"}]}
+{"propietarios":[{"idPropietario":0,"usuario":"LichoLucero","password":"123","rfid":"D0 E5 2C 79","nombre":"Licho","apellido":"Lucero","DNI":"44653289"},{"idPropietario":0,"usuario":"cettipao","password":"123","rfid":"9A 24 5A 89","nombre":"Paolo","apellido":"Cetti","DNI":"44739152"}]}

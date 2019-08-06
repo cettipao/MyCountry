@@ -6,6 +6,8 @@
 package mycountry;
 
 import com.panamahitek.ArduinoException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 /**
  *
  * @author cetti
@@ -31,6 +33,7 @@ public class Guardia extends javax.swing.JFrame {
         }
         addPropietario = new AddPropietario(ino,fm);//Instancio addProp (Necesita ino)
         initComponents();
+        reloj();
     }
 
     /**
@@ -56,8 +59,7 @@ public class Guardia extends javax.swing.JFrame {
         lblTipoGreso = new javax.swing.JLabel();
         lblPropAnf = new javax.swing.JLabel();
         lblPropietarioVisitante = new javax.swing.JLabel();
-        lblInfoPersona11 = new javax.swing.JLabel();
-        lblInfoPersona12 = new javax.swing.JLabel();
+        lblTime = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         btnEscanear1 = new javax.swing.JButton();
 
@@ -125,13 +127,9 @@ public class Guardia extends javax.swing.JFrame {
         lblPropietarioVisitante.setForeground(new java.awt.Color(153, 153, 153));
         lblPropietarioVisitante.setText("propietario");
 
-        lblInfoPersona11.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblInfoPersona11.setForeground(new java.awt.Color(204, 204, 204));
-        lblInfoPersona11.setText("00/00/00");
-
-        lblInfoPersona12.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblInfoPersona12.setForeground(new java.awt.Color(204, 204, 204));
-        lblInfoPersona12.setText("00:00:00");
+        lblTime.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        lblTime.setForeground(new java.awt.Color(204, 204, 204));
+        lblTime.setText("00:00:00");
 
         jButton1.setBackground(new java.awt.Color(30, 30, 30));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mycountry/conf.png"))); // NOI18N
@@ -185,10 +183,8 @@ public class Guardia extends javax.swing.JFrame {
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblInfoPersona12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(lblInfoPersona11)
-                        .addGap(111, 111, 111)
+                        .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(addProp, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEscanear1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -206,7 +202,7 @@ public class Guardia extends javax.swing.JFrame {
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(21, 21, 21)
                 .addComponent(lblInfoPersona)
-                .addGap(18, 27, Short.MAX_VALUE)
+                .addGap(18, 26, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTipoIngresante)
                     .addComponent(lblNombre)
@@ -222,16 +218,16 @@ public class Guardia extends javax.swing.JFrame {
                     .addComponent(lblDocumento)
                     .addComponent(lblDni)
                     .addComponent(lblPropietarioVisitante))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnEscanear1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(addProp, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblInfoPersona12, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(lblInfoPersona11, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTime, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -269,6 +265,11 @@ public class Guardia extends javax.swing.JFrame {
     public void setTxtNewProp(String id) {
         addPropietario.setTextRfid(id);
     }
+    
+    private void reloj(){
+        RelojThread relojThread = new RelojThread(this.lblTime);
+        relojThread.start();
+    }
 
 
 
@@ -281,15 +282,15 @@ public class Guardia extends javax.swing.JFrame {
     private javax.swing.JLabel lblDni;
     private javax.swing.JLabel lblDocumento;
     private javax.swing.JLabel lblInfoPersona;
-    private javax.swing.JLabel lblInfoPersona11;
-    private javax.swing.JLabel lblInfoPersona12;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblName;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPropAnf;
     private javax.swing.JLabel lblPropietarioVisitante;
     private javax.swing.JLabel lblSurname;
+    private javax.swing.JLabel lblTime;
     private javax.swing.JLabel lblTipoGreso;
     private javax.swing.JLabel lblTipoIngresante;
     // End of variables declaration//GEN-END:variables
 }
+
