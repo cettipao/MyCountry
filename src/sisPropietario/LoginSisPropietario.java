@@ -23,7 +23,7 @@ public class LoginSisPropietario extends javax.swing.JFrame {
         fm = new FileManager();
         initComponents();
         setResizable(false);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
     }
 

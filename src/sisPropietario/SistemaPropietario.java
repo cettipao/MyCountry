@@ -27,6 +27,7 @@ public class SistemaPropietario extends javax.swing.JFrame {
         initComponents();
         this.lblProp.setText("Propietario: "+p.getApellido());
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        confirmExit();
     }
 
     /**
@@ -321,14 +322,34 @@ public class SistemaPropietario extends javax.swing.JFrame {
         }
         //Crea Invitado
         int idVisitante = fm.getUltimoIdVisitante() + 1;
-        fm.getGestorVisitante().addVisitanteEsperadoEntrada(new Visitante(idVisitante,this.propietario,this.txtName.getName(),this.txtSurname.getText(),this.txtDni.getText()));
+        System.out.println("Id:" + idVisitante + " IdViejo " + fm.getGestorVisitante());
+        Visitante visi = new Visitante(idVisitante,this.propietario,this.txtName.getText(),this.txtSurname.getText(),this.txtDni.getText());
+        fm.getGestorVisitante().addVisitanteEsperadoEntrada(visi);
         //Guarda Cambios
         fm.guardarObjeto("gestorVisitantes");
         //Borra texto
         this.txtDni.setText("");
         this.txtName.setText("");
         this.txtSurname.setText("");
+        //Esconde ventana y pasa a la siguiente
+        this.setVisible(false);
+        InvitadoExitoso invitadoExitoso = new InvitadoExitoso(visi,this);
+        invitadoExitoso.show();
         
+    }
+     private void confirmExit(){
+       this.addWindowListener(new java.awt.event.WindowAdapter() {
+    @Override
+    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+        LoginSisPropietario loginSisPropietario = new LoginSisPropietario();
+        loginSisPropietario.show();
+        dispose();
+    }
+});
+   }
+
+    public Propietario getPropietario() {
+        return propietario;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
