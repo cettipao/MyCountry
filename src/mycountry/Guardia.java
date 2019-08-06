@@ -21,7 +21,7 @@ public class Guardia extends javax.swing.JFrame {
     private FileManager fm;
     private AddPropietario addPropietario;
     public Guardia(FileManager fm) {
-        
+      
         this.fm = fm;
         fm.CrearGestorPropietario();
         fm.CrearGestorVisitante();
@@ -31,7 +31,7 @@ public class Guardia extends javax.swing.JFrame {
         } catch (ArduinoException ex) {
             System.out.println("No se pudo establecer conexion con arduino");
         }
-        addPropietario = new AddPropietario(ino,fm);//Instancio addProp (Necesita ino)
+        addPropietario = new AddPropietario(ino, fm);//Instancio addProp (Necesita ino)
         initComponents();
         reloj();
     }
@@ -134,6 +134,11 @@ public class Guardia extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(30, 30, 30));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mycountry/conf.png"))); // NOI18N
         jButton1.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btnEscanear1.setBackground(new java.awt.Color(255, 102, 0));
         btnEscanear1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -253,6 +258,12 @@ public class Guardia extends javax.swing.JFrame {
     private void btnEscanear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscanear1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEscanear1ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        ChangeLoginInfo changeLoginInfo = new ChangeLoginInfo(fm);
+        changeLoginInfo.show();
+    }//GEN-LAST:event_jButton1ActionPerformed
     public void propietarioEnPuerta(Propietario p){
         this.lblName.setText(p.getNombre());
         this.lblSurname.setText(p.getApellido());

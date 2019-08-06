@@ -26,4 +26,11 @@ public class GestorPropietario {
     public void removePropietario(Propietario p){
         this.propietarios.remove(p);
     }
+
+    @Override
+    public String toString() {
+        return "GestorPropietario{" + "propietarios=" + propietarios.toString() + '}';
+    }
+    
+    
 }

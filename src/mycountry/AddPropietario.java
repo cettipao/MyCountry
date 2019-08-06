@@ -348,17 +348,30 @@ public class AddPropietario extends javax.swing.JFrame {
     }//GEN-LAST:event_txtRfidKeyPressed
 
    public void setTextRfid(String rfid){
-       this.txtRfid.setText(rfid);
-   }
-   private void confirmExit(){
-       this.addWindowListener(new java.awt.event.WindowAdapter() {
-    @Override
-    public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-        ino.setAddProp(false);
+        this.txtRfid.setText(rfid);
     }
-});
-   }
+
+    private void confirmExit() {
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                ino.setAddProp(false);
+                //Borrar txt
+                txtName.setText("");
+                txtSurname.setText("");
+                txtDni.setText("");
+                txtUser.setText("");
+                txtPass.setText("");
+                txtRfid.setText("");
+            }
+        });
+    }
+
    private void agregarPropietario(){
+       System.out.println("RFID: " + this.txtRfid.getText());
+       String rfid = this.txtRfid.getText();
+       System.out.println("Previo a Realizar cambios");
+       System.out.println(fm.getGestorPropietario().toString());
        //Agregando Propietario
         //Comprobando si alguno de los campos esta vacio
         if(this.txtName.getText().equals("") || this.txtSurname.getText().equals("") || this.txtDni.getText().equals("") || this.txtUser.getText().equals("") || this.txtPass.getText().equals("") || this.txtRfid.getText().equals("")){
@@ -370,17 +383,21 @@ public class AddPropietario extends javax.swing.JFrame {
             //Dni no es valido
             return;
         }
-        //Comprobando si el Rfid ya tiene un Propietario Asignado
-        for (Propietario p : this.fm.getGestorPropietario().getPropietarios()) {
-            if(p.getRfid().equals(this.txtRfid.getText()))
-                System.out.println("El Rfid ya contiene Owner, si desea continuar, los datos se sobrescribiran");
+       //Comprobando si el Rfid ya tiene un Propietario Asignado
+       for (Propietario p : this.fm.getGestorPropietario().getPropietarios()) {
+           if (p.getRfid().equals(this.txtRfid.getText())) {
+               System.out.println("El Rfid ya contiene Owner, si desea continuar, los datos se sobrescribiran");
                this.fm.getGestorPropietario().removePropietario(p);
-        }
+           }
+           
+       }
         //Agregando Propietario
-        int idPropietario = this.fm.getUltimoIdPropietario();
+        int idPropietario = this.fm.getUltimoIdPropietario() + 1;
         this.fm.getGestorPropietario().addPropietario(new Propietario(idPropietario,this.txtUser.getText(),this.txtPass.getText(),this.txtRfid.getText(),this.txtName.getText(),this.txtSurname.getText(),this.txtDni.getText()));
         System.out.println("Propietario agregado con Exito");
         //Guardar
+        System.out.println("Despues de Cambios");
+        System.out.println(fm.getGestorPropietario().toString());
         this.fm.guardarObjeto("gestorPropietario");
         //Borrar txt
         this.txtName.setText("");
