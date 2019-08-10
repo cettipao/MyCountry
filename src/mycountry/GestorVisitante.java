@@ -34,6 +34,9 @@ public class GestorVisitante {
         this.visitantesEsperadosEntrada.remove(v);
     }
 
+    public void removeVisitanteEsperadoSalida(Visitante v){
+        this.visitantesEsperadosSalida.remove(v);
+    }
     public ArrayList<Visitante> getVisitantesEsperadosEntrada() {
         return visitantesEsperadosEntrada;
     }

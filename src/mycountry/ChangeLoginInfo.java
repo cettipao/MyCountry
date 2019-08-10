@@ -45,6 +45,10 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
         txtPass = new javax.swing.JTextField();
         lblUser5 = new javax.swing.JLabel();
         txtActualPass = new javax.swing.JPasswordField();
+        lblUser2 = new javax.swing.JLabel();
+        lblUser3 = new javax.swing.JLabel();
+        btnResetVisitantes = new javax.swing.JButton();
+        btnResetPropietarios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -122,31 +126,66 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
             }
         });
 
+        lblUser2.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblUser2.setForeground(new java.awt.Color(204, 204, 204));
+        lblUser2.setText("Reiniciar Gestor Visitantes");
+
+        lblUser3.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        lblUser3.setForeground(new java.awt.Color(204, 204, 204));
+        lblUser3.setText("Reiniciar Gestor Propietarios");
+
+        btnResetVisitantes.setBackground(new java.awt.Color(255, 102, 0));
+        btnResetVisitantes.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnResetVisitantes.setForeground(new java.awt.Color(255, 255, 255));
+        btnResetVisitantes.setText("Reiniciar");
+        btnResetVisitantes.setBorder(null);
+        btnResetVisitantes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetVisitantesActionPerformed(evt);
+            }
+        });
+
+        btnResetPropietarios.setBackground(new java.awt.Color(255, 102, 0));
+        btnResetPropietarios.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnResetPropietarios.setForeground(new java.awt.Color(255, 255, 255));
+        btnResetPropietarios.setText("Reiniciar");
+        btnResetPropietarios.setBorder(null);
+        btnResetPropietarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetPropietariosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(14, 14, 14)
+                .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnResetPropietarios, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblUser)
+                                .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                                .addComponent(lblUser1)
+                                .addComponent(txtPass)
+                                .addComponent(lblUser5)
+                                .addComponent(txtActualPass)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblUser)
-                                    .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                                    .addComponent(lblUser1)
-                                    .addComponent(txtPass, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                                    .addComponent(lblUser5)
-                                    .addComponent(txtActualPass)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(14, 14, 14)
-                                .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 25, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                            .addComponent(lblUser2)
+                            .addComponent(lblUser3)
+                            .addComponent(btnResetVisitantes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(39, 39, 39))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,18 +193,26 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(lblUser)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUser)
+                    .addComponent(lblUser2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtUser, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnResetVisitantes, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(9, 9, 9)
                 .addComponent(lblUser1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblUser5)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblUser3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUser5)
+                    .addComponent(btnResetPropietarios, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtActualPass, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(31, 31, 31)
                 .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -174,7 +221,7 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -225,6 +272,18 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
             changeLoginData();
         }
     }//GEN-LAST:event_txtActualPassKeyPressed
+
+    private void btnResetVisitantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetVisitantesActionPerformed
+        // TODO add your handling code here:
+        fm.setGestorPropietario(new GestorPropietario());
+        fm.guardarObjeto("gestorPropietario");
+    }//GEN-LAST:event_btnResetVisitantesActionPerformed
+
+    private void btnResetPropietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetPropietariosActionPerformed
+        // TODO add your handling code here:
+        fm.setGestorVisitante(new GestorVisitante());
+        fm.guardarObjeto("gestorVisitantes");
+    }//GEN-LAST:event_btnResetPropietariosActionPerformed
     private void changeLoginData(){
         //Comprueba si el PassActual es correcto
         if(this.txtActualPass.getText().equals(fm.getGuardiaLogin().getPassword())){
@@ -262,10 +321,14 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChange;
+    private javax.swing.JButton btnResetPropietarios;
+    private javax.swing.JButton btnResetVisitantes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLogin;
     private javax.swing.JLabel lblUser;
     private javax.swing.JLabel lblUser1;
+    private javax.swing.JLabel lblUser2;
+    private javax.swing.JLabel lblUser3;
     private javax.swing.JLabel lblUser5;
     private javax.swing.JPasswordField txtActualPass;
     private javax.swing.JTextField txtPass;

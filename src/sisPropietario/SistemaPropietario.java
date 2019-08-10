@@ -327,11 +327,11 @@ public class SistemaPropietario extends javax.swing.JFrame {
         }
         //Crea Invitado
         int idVisitante = fm.getUltimoIdVisitante() + 1;
-        System.out.println("Id:" + idVisitante + " IdViejo " + fm.getGestorVisitante());
         Visitante visi = new Visitante(idVisitante,this.propietario,this.txtName.getText(),this.txtSurname.getText(),this.txtDni.getText());
         fm.getGestorVisitante().addVisitanteEsperadoEntrada(visi);
         //Guarda Cambios
         fm.guardarObjeto("gestorVisitantes");
+        System.out.println("Nuevo invitado: " + visi);
         //Borra texto
         this.txtDni.setText("");
         this.txtName.setText("");

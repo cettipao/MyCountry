@@ -257,6 +257,8 @@ public class Guardia extends javax.swing.JFrame {
 
     private void btnEscanear1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEscanear1ActionPerformed
         // TODO add your handling code here:
+        QrCodeReader qrCodeReader = new QrCodeReader(this);
+        qrCodeReader.show();
     }//GEN-LAST:event_btnEscanear1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -280,6 +282,37 @@ public class Guardia extends javax.swing.JFrame {
     private void reloj(){
         RelojThread relojThread = new RelojThread(this.lblTime);
         relojThread.start();
+    }
+    
+    public void visitante(String id){
+        System.out.println("XD");
+        for(Visitante v : fm.getGestorVisitante().getVisitantesEsperadosEntrada()){
+            if(Integer.toString(v.getIdVisitante()).equals(id)){
+                System.out.println("Visitante Esperado Entrada en Puerta");
+                fm.getGestorVisitante().addVisitanteEsperadoSalida(v);
+                fm.guardarObjeto("gestorVisitantes");
+                this.lblName.setText(v.getNombre());
+                this.lblSurname.setText(v.getApellido());
+                this.lblDni.setText(v.getDNI());
+                this.lblTipoIngresante.setText("Visitante");
+                this.lblTipoGreso.setText("Ingreso");
+                this.lblPropietarioVisitante.setText(v.getPropietario().getApellido());
+            }
+            else if (Integer.toString(v.getIdVisitante()).equals(id)){
+                fm.getGestorVisitante().removeVisitanteEsperadoSalida(v);
+                fm.guardarObjeto("gestorVisitantes");
+                this.lblName.setText(v.getNombre());
+                this.lblSurname.setText(v.getApellido());
+                this.lblDni.setText(v.getDNI());
+                this.lblTipoIngresante.setText("Visitante");
+                this.lblTipoGreso.setText("Egreso");
+                this.lblPropietarioVisitante.setText(v.getPropietario().getApellido());
+                
+            }
+            else{
+                System.out.println("Qr No valido");
+            }
+        }
     }
 
 
