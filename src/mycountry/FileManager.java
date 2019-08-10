@@ -134,10 +134,16 @@ public class FileManager {
     
     
     public int getUltimoIdPropietario(){
+        if(this.gestorPropietario.getPropietarios().isEmpty()){
+            return 0;
+        }
         return this.gestorPropietario.getPropietarios().get(this.gestorPropietario.getPropietarios().size()-1).getIdPropietario();
     }
     
     public int getUltimoIdVisitante(){
+        if(this.gestorVisitante.getVisitantesTotales().isEmpty()){
+            return 0;
+        }
         return this.gestorVisitante.getVisitantesTotales().get(this.gestorVisitante.getVisitantesTotales().size()-1).getIdVisitante();
     }
 
@@ -152,6 +158,16 @@ public class FileManager {
     public GuardiaLogin getGuardiaLogin() {
         return guardiaLogin;
     }
+
+    public void setGestorPropietario(GestorPropietario gestorPropietario) {
+        this.gestorPropietario = gestorPropietario;
+    }
+
+    public void setGestorVisitante(GestorVisitante gestorVisitante) {
+        this.gestorVisitante = gestorVisitante;
+    }
+    
+    
     
     
     

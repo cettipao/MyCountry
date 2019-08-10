@@ -39,6 +39,7 @@ public class QrCodeReader extends javax.swing.JFrame {
         this.guardia = g;
         
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         
         setLocationRelativeTo(null);
         if(Webcam.getWebcams().size()==1){
@@ -106,8 +107,8 @@ public class QrCodeReader extends javax.swing.JFrame {
             while (QRCode ==true) {
                 try {
                     Image image = webcam.getImage();
-                    ImageIO.write(webcam.getImage(), "JPG", new File("firstcapture.jpg"));
-                    File ubicacionImagen = new File("firstcapture.jpg");
+                    ImageIO.write(webcam.getImage(), "JPG", new File("img/captures/firstcapture.jpg"));
+                    File ubicacionImagen = new File("img/captures/firstcapture.jpg");
                     imagen = ImageIO.read(ubicacionImagen);
                     LuminanceSource fuente = new BufferedImageLuminanceSource(imagen);
                     BinaryBitmap mapaBits = new BinaryBitmap(new HybridBinarizer(fuente));
