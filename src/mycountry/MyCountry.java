@@ -16,6 +16,7 @@ public class MyCountry {
         
         Login login = new Login();
         login.setVisible(true);
+        login.setLocationRelativeTo(null);
         LoginSisPropietario loginSisPropietario = new LoginSisPropietario();
         loginSisPropietario.setVisible(true);
     }

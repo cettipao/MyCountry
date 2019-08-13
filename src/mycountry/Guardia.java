@@ -33,6 +33,7 @@ public class Guardia extends javax.swing.JFrame {
         }
         addPropietario = new AddPropietario(ino, fm);//Instancio addProp (Necesita ino)
         initComponents();
+        
         reloj();
     }
 
@@ -285,11 +286,32 @@ public class Guardia extends javax.swing.JFrame {
     }
     
     public void visitante(String id){
-        System.out.println("XD");
+        fm.CrearGestorVisitante();
+        System.out.println("Qr Detectado");
+        for (Visitante v : fm.getGestorVisitante().getVisitantesEsperadosEntrada()) {
+            if(Integer.toString(v.getIdVisitante()).equals(id)){
+                this.lblName.setText(v.getNombre());
+                this.lblSurname.setText(v.getApellido());
+                this.lblDni.setText(v.getDNI());
+                this.lblTipoIngresante.setText("Visitante");
+                this.lblTipoGreso.setText("Ingreso");
+                this.lblPropietarioVisitante.setText(v.getPropietario().getApellido());
+                
+                fm.getGestorVisitante().removeVisitanteEsperadoEntrada(v);
+                fm.guardarObjeto("gestorVisitantes");
+                return;
+            }
+            
+        }
+        System.out.println("QR NO VALIDO");
+        
+        
+        
+        /*
         for(Visitante v : fm.getGestorVisitante().getVisitantesEsperadosEntrada()){
             if(Integer.toString(v.getIdVisitante()).equals(id)){
                 System.out.println("Visitante Esperado Entrada en Puerta");
-                fm.getGestorVisitante().addVisitanteEsperadoSalida(v);
+                //fm.getGestorVisitante().addVisitanteEsperadoSalida(v);
                 fm.guardarObjeto("gestorVisitantes");
                 this.lblName.setText(v.getNombre());
                 this.lblSurname.setText(v.getApellido());
@@ -312,7 +334,9 @@ public class Guardia extends javax.swing.JFrame {
             else{
                 System.out.println("Qr No valido");
             }
+
         }
+*/
     }
 
 

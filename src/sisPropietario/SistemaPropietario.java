@@ -318,6 +318,7 @@ public class SistemaPropietario extends javax.swing.JFrame {
                 return;
             }
         }
+        /*
         //Comprueba si hay algun invitado dentro del barrio (Esperados Salida) de mismo DNI
         for(Visitante v:fm.getGestorVisitante().getVisitantesEsperadosSalida()){
             if(v.getDNI().equals(this.txtDni.getText())){
@@ -325,6 +326,7 @@ public class SistemaPropietario extends javax.swing.JFrame {
                 return;
             }
         }
+        */
         //Crea Invitado
         int idVisitante = fm.getUltimoIdVisitante() + 1;
         Visitante visi = new Visitante(idVisitante,this.propietario,this.txtName.getText(),this.txtSurname.getText(),this.txtDni.getText());
