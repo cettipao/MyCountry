@@ -141,10 +141,10 @@ public class FileManager {
     }
     
     public int getUltimoIdVisitante(){
-        if(this.gestorVisitante.getVisitantesTotales().isEmpty()){
-            return 0;
+        if(this.gestorVisitante.getVisitantesEsperadosEntrada().isEmpty()){
+            return -1;
         }
-        return this.gestorVisitante.getVisitantesTotales().get(this.gestorVisitante.getVisitantesTotales().size()-1).getIdVisitante();
+        return this.gestorVisitante.getVisitantesEsperadosEntrada().get(this.gestorVisitante.getVisitantesEsperadosEntrada().size()-1).getIdVisitante();
     }
 
     public GestorPropietario getGestorPropietario() {

@@ -1,1 +1,1 @@
-{"visitantesEsperadosEntrada":[],"visitantesEsperadosSalida":[{"idVisitante":1,"propietario":{"idPropietario":3,"usuario":"cettipao","password":"123","rfid":"9A 24 5A 89","nombre":"Paolo","apellido":"Cetti","DNI":"44739152"},"nombre":"testeo","apellido":"primero","DNI":"44258258"}],"visitantesTotales":[{"idVisitante":1,"propietario":{"idPropietario":3,"usuario":"cettipao","password":"123","rfid":"9A 24 5A 89","nombre":"Paolo","apellido":"Cetti","DNI":"44739152"},"nombre":"testeo","apellido":"primero","DNI":"44258258"}]}
+{"visitantesEsperadosEntrada":[]}
