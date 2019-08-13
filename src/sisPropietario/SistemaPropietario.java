@@ -28,6 +28,7 @@ public class SistemaPropietario extends javax.swing.JFrame {
         this.lblProp.setText("Propietario: "+p.getApellido());
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         confirmExit();
+        this.lblAdv.setText("");
     }
 
     /**
@@ -55,6 +56,7 @@ public class SistemaPropietario extends javax.swing.JFrame {
         txtDni = new javax.swing.JTextField();
         txtSurname = new javax.swing.JTextField();
         btnInvitar1 = new javax.swing.JButton();
+        lblAdv = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -177,6 +179,10 @@ public class SistemaPropietario extends javax.swing.JFrame {
             }
         });
 
+        lblAdv.setForeground(new java.awt.Color(0, 0, 0));
+        lblAdv.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblAdv.setText("Advertencia");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -184,29 +190,33 @@ public class SistemaPropietario extends javax.swing.JFrame {
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(btnInvitar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(25, 25, 25)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                                .addComponent(lblUser)
-                                .addComponent(txtName)
-                                .addComponent(lblPass)
-                                .addComponent(jSeparator2)
-                                .addComponent(lblPass1)
-                                .addComponent(jSeparator3)
-                                .addComponent(lblLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
-                                .addComponent(txtDni)
-                                .addComponent(txtSurname))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(101, 101, 101)
-                        .addComponent(jLabel4)
-                        .addGap(29, 29, 29)
-                        .addComponent(btnInvitar1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(btnInvitar, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(25, 25, 25)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                                        .addComponent(lblUser)
+                                        .addComponent(txtName)
+                                        .addComponent(lblPass)
+                                        .addComponent(jSeparator2)
+                                        .addComponent(lblPass1)
+                                        .addComponent(jSeparator3)
+                                        .addComponent(lblLogin1, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                                        .addComponent(txtDni)
+                                        .addComponent(txtSurname))))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(118, 118, 118)
+                                .addComponent(jLabel4)
+                                .addGap(29, 29, 29)
+                                .addComponent(btnInvitar1)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(lblAdv, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +244,9 @@ public class SistemaPropietario extends javax.swing.JFrame {
                 .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnInvitar, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
+                .addComponent(lblAdv)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(btnInvitar1))
@@ -304,17 +316,20 @@ public class SistemaPropietario extends javax.swing.JFrame {
         fm.CrearGestorVisitante();
         //Comprueba si algun campo esta vacio
         if(this.txtDni.getText().equals("") || this.txtSurname.getText().equals("") || this.txtName.getText().equals("")){
+            this.lblAdv.setText("Uno de los campos esta vacio");
             return;
         }
         //Comprueba si el DNI es valido
         if(this.txtDni.getText().length()!=8){
             //Dni no es valido
+            this.lblAdv.setText("DNI ingresado no es valido");
             return;
         }
         //Comprueba si hay algun invitado esperado de mismo DNI del mismo propietario
         for (Visitante v:fm.getGestorVisitante().getVisitantesEsperadosEntrada()){
             if(v.getDNI().equals(this.txtDni.getText()) && v.getPropietario().getIdPropietario() == this.propietario.getIdPropietario()){
                 System.out.println("Este Propietario ya invito a este visitante");
+                this.lblAdv.setText("Visitante ya invitado");
                 return;
             }
         }
@@ -368,6 +383,7 @@ public class SistemaPropietario extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JLabel lblAdv;
     private javax.swing.JLabel lblLogin1;
     private javax.swing.JLabel lblPass;
     private javax.swing.JLabel lblPass1;

@@ -5,6 +5,7 @@
  */
 package mycountry;
 
+import dialogos.Advertencia;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -189,6 +190,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_txtUserKeyPressed
 
     private void logueo(){
+        
         if (CompararUserPass(txtUser.getText(),txtPass.getText())) {
             System.out.println("Login successful");
             dispose();
@@ -196,16 +198,9 @@ public class Login extends javax.swing.JFrame {
             guardia.show();
         } else {
             System.out.println("login failed");
-
-            int seleccion = JOptionPane.showOptionDialog(
-                    null,
-                    "Login Incorrecto",
-                    "Login de Sala de Chat",
-                    JOptionPane.YES_NO_CANCEL_OPTION,
-                    JOptionPane.ERROR_MESSAGE,
-                    null,
-                    new Object[]{"Reintentar"},
-                    "opcion 1");
+            Advertencia advertencia = new Advertencia(this,true,"Username o Password incorrectos");
+            advertencia.show();
+            
         }
     }
     

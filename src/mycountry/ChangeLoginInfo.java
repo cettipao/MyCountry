@@ -5,6 +5,7 @@
  */
 package mycountry;
 
+import dialogos.Advertencia;
 import java.awt.event.KeyEvent;
 
 /**
@@ -277,12 +278,16 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
         // TODO add your handling code here:
         fm.setGestorPropietario(new GestorPropietario());
         fm.guardarObjeto("gestorPropietario");
+        Advertencia advertencia = new Advertencia(this,true,"Gestor de Propietarios reseteado");
+        advertencia.show();
     }//GEN-LAST:event_btnResetVisitantesActionPerformed
 
     private void btnResetPropietariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetPropietariosActionPerformed
         // TODO add your handling code here:
         fm.setGestorVisitante(new GestorVisitante());
         fm.guardarObjeto("gestorVisitantes");
+         Advertencia advertencia = new Advertencia(this,true,"Gestor de Visitantes reseteado");
+        advertencia.show();
     }//GEN-LAST:event_btnResetPropietariosActionPerformed
     private void changeLoginData(){
         //Comprueba si el PassActual es correcto
@@ -297,11 +302,15 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
             //Guarda cambios
             System.out.println(fm.getGuardiaLogin());
             System.out.println("Cambios Guardados con Exito");
+            Advertencia advertencia = new Advertencia(this,true,"Cambios Guardados con Exito");
+            advertencia.show();
             this.txtActualPass.setText("");
             this.txtUser.setText("");
             this.txtPass.setText("");
         }
         else{
+            Advertencia advertencia = new Advertencia(this,true,"Password Actual Incorrecta");
+            advertencia.show();
             return;
         }
         

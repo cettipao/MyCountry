@@ -5,6 +5,7 @@
  */
 package mycountry;
 
+import dialogos.Advertencia;
 import java.awt.event.KeyEvent;
 
 /**
@@ -376,17 +377,23 @@ public class AddPropietario extends javax.swing.JFrame {
         //Comprobando si alguno de los campos esta vacio
         if(this.txtName.getText().equals("") || this.txtSurname.getText().equals("") || this.txtDni.getText().equals("") || this.txtUser.getText().equals("") || this.txtPass.getText().equals("") || this.txtRfid.getText().equals("")){
             System.out.println("Alguno de los campos esta vacio. Intente otra vez");
+            Advertencia advertencia = new Advertencia(this,true,"Algunos de los campos esta vacio");
+            advertencia.show();
             return;
         }
         //Comprueba si el DNI es valido
         if(this.txtDni.getText().length()!=8){
             //Dni no es valido
+            Advertencia advertencia = new Advertencia(this,true,"DNI no es valido");
+            advertencia.show();
             return;
         }
        //Comprobando si el Rfid ya tiene un Propietario Asignado
        for (Propietario p : this.fm.getGestorPropietario().getPropietarios()) {
            if (p.getRfid().equals(this.txtRfid.getText())) {
                System.out.println("El Rfid ya contiene Owner, si desea continuar, los datos se sobrescribiran");
+                Advertencia advertencia = new Advertencia(this,true,"El propietario se sobreescribira");
+                advertencia.show();
                this.fm.getGestorPropietario().removePropietario(p);
            }
            
@@ -395,6 +402,8 @@ public class AddPropietario extends javax.swing.JFrame {
         int idPropietario = this.fm.getUltimoIdPropietario() + 1;
         this.fm.getGestorPropietario().addPropietario(new Propietario(idPropietario,this.txtUser.getText(),this.txtPass.getText(),this.txtRfid.getText(),this.txtName.getText(),this.txtSurname.getText(),this.txtDni.getText()));
         System.out.println("Propietario agregado con Exito");
+        Advertencia advertencia = new Advertencia(this,true,"Propietario agregado con Exito");
+        advertencia.show();
         //Guardar
         System.out.println("Despues de Cambios");
         System.out.println(fm.getGestorPropietario().toString());

@@ -6,6 +6,7 @@
 package mycountry;
 
 import com.panamahitek.ArduinoException;
+import dialogos.Advertencia;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 /**
@@ -21,7 +22,8 @@ public class Guardia extends javax.swing.JFrame {
     private FileManager fm;
     private AddPropietario addPropietario;
     public Guardia(FileManager fm) {
-      
+        initComponents();
+        reloj();
         this.fm = fm;
         fm.CrearGestorPropietario();
         fm.CrearGestorVisitante();
@@ -30,11 +32,10 @@ public class Guardia extends javax.swing.JFrame {
             ino = new Arduino(fm.getGestorPropietario(), this, addPropietario);//Instancio Ino (Necesita addprop)
         } catch (ArduinoException ex) {
             System.out.println("No se pudo establecer conexion con arduino");
+            Advertencia advertencia = new Advertencia(this,true,"Error al conectar Arduino");
+            advertencia.show();
         }
         addPropietario = new AddPropietario(ino, fm);//Instancio addProp (Necesita ino)
-        initComponents();
-        
-        reloj();
     }
 
     /**
@@ -267,7 +268,7 @@ public class Guardia extends javax.swing.JFrame {
         ChangeLoginInfo changeLoginInfo = new ChangeLoginInfo(fm);
         changeLoginInfo.show();
     }//GEN-LAST:event_jButton1ActionPerformed
-    public void propietarioEnPuerta(Propietario p){
+    public void propietarioEnPuerta(Propietario p){       
         this.lblName.setText(p.getNombre());
         this.lblSurname.setText(p.getApellido());
         this.lblDni.setText(p.getDNI());
@@ -275,6 +276,8 @@ public class Guardia extends javax.swing.JFrame {
         this.lblTipoGreso.setText("");
         this.lblPropietarioVisitante.setText("propietario");
     }
+    
+    
 
     public void setTxtNewProp(String id) {
         addPropietario.setTextRfid(id);
@@ -303,7 +306,8 @@ public class Guardia extends javax.swing.JFrame {
             }
             
         }
-        System.out.println("QR NO VALIDO");
+        Advertencia advertencia = new Advertencia(this,true,"Codigo QR no valido");
+        advertencia.show();
         
         
         
