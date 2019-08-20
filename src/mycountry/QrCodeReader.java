@@ -1,15 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * La clase QrCodeReader realiza la lectura de los codigos Qr
+ * mediante la camara web y manda la informacion conseguida
+ * a Guardia
  */
 package mycountry;
 
 import com.github.sarxos.webcam.Webcam;
 import java.awt.Dimension;
 import java.awt.Image;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.ChecksumException;
@@ -26,10 +24,6 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
-/**
- *
- * @author Thanos Muere
- */
 public class QrCodeReader extends javax.swing.JFrame {
 
     private Webcam webcam;
@@ -42,11 +36,11 @@ public class QrCodeReader extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         
         setLocationRelativeTo(null);
-        if(Webcam.getWebcams().size()==1){
-            webcam = Webcam.getDefault();
+        if(Webcam.getWebcams().size()==1){//Comprueba si hay otra camara web disponible y abre la externa
+            webcam = Webcam.getDefault();//Abre la camara web por Default
         }
         else{
-            webcam = Webcam.getWebcamByName("USB Camera-B4.09.24.1 /dev/video1");
+            webcam = Webcam.getWebcamByName("USB Camera-B4.09.24.1 /dev/video1");//Abre la camara web externa (PS3)
         }
         /*
         try{

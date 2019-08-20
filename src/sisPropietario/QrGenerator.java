@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * QrGenerator es el encargado de generar Qr's
+ *
+ * 
  */
 package sisPropietario;
 import com.google.zxing.BarcodeFormat;
@@ -14,15 +14,16 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import javax.imageio.ImageIO;
-/**
- *
- * @author cetti
- */
+
 public class QrGenerator {
 
     public QrGenerator() {
     }
     
+    /*
+     *Genera un Qr y lo guarda en img/qr/ para ser mostrado en invitadoExitoso
+     *@param id informacion a guardar en el Qr
+     */
     public void generarQr(int id){
         try {
             

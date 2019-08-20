@@ -1,7 +1,7 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * La clase RelojThread inicia un hilo donde actualizara la
+ * hora de Guardia cada segundo
+ *
  */
 package mycountry;
 
@@ -11,12 +11,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-/**
- *
- * @author cetti
- */
 public class RelojThread extends Thread{
     private Calendar calendar;
     private SimpleDateFormat formatter;

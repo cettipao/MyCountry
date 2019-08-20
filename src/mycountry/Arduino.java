@@ -1,8 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+La clase Arduino lleva el control entre el microprocesador Arduino y el software MyCountry
+*/
 package mycountry;
 
 import com.panamahitek.ArduinoException;
@@ -23,9 +21,10 @@ public class Arduino {
         this.gp = gp;
         this.guardia = g;
         this.addProp=false;
-        ino = new PanamaHitek_Arduino();
         
-        listener = (SerialPortEvent spe) -> {
+        ino = new PanamaHitek_Arduino();//Instancia una conexion con el puerto serial de tipo Arduino
+        
+        listener = (SerialPortEvent spe) -> {//Crea un Listener para estar leyendo constantemente informacion que manda el arduino
             try {
                 if (ino.isMessageAvailable()) {
                     String id = ino.printMessage();
@@ -48,6 +47,9 @@ public class Arduino {
         };
         ino.arduinoRXTX("/dev/ttyACM0", 9600, listener);
     }
+    /*
+    Envia informacion al arduino para encender el Rele y dejar pasar a la persona
+    */
     public void prenderRele() throws ArduinoException, SerialPortException{
         this.ino.sendData("p");
     }

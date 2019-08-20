@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * GuardiaLogin Guarda toda la informacion del login de la guardia
+ * para ser guardado por Gson en un archivo Json
  */
 package mycountry;
 

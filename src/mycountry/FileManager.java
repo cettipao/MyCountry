@@ -13,10 +13,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- *
- * @author cetti
- */
 public class FileManager {
     private Gson gson;
     private GestorPropietario gestorPropietario;
@@ -64,7 +60,11 @@ public class FileManager {
             System.out.println(e);
         } 
     }
-    
+    /*
+     * Convierte el String guardado en guardiaLogin.txt
+     * en un objeto tipo GestorVisitante mediante el uso
+     * de la libreria Gson
+     */
     public void CrearGuardiaLogin(){
         try{
         File archivo = new File("src/json/guardiaLogin.txt");
@@ -166,8 +166,11 @@ public class FileManager {
     public void setGestorVisitante(GestorVisitante gestorVisitante) {
         this.gestorVisitante = gestorVisitante;
     }
-    
-    
+
+    @Override
+    public String toString() {
+        return "FileManager{" + "gson=" + gson + ", gestorPropietario=" + gestorPropietario + ", gestorVisitante=" + gestorVisitante + ", guardiaLogin=" + guardiaLogin + '}';
+    }
     
     
     
