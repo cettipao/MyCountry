@@ -59,14 +59,12 @@ public class Arduino {
         
     }
 
-    public AddPropietario getAd() {
-        return ad;
+    @Override
+    public String toString() {
+        return "Arduino{" + "ino=" + ino + ", listener=" + listener + ", gp=" + gp + ", guardia=" + guardia + ", ad=" + ad + ", addProp=" + addProp + '}';
     }
-
-    public void setAd(AddPropietario ad) {
-        
-        this.ad = ad;
-    }
+    
+    
     
         
 }
