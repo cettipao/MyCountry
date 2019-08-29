@@ -8,12 +8,12 @@ import java.util.ArrayList;
 
 public class GestorVisitante {
     private ArrayList<Visitante> visitantesEsperadosEntrada;
-    //private ArrayList<Visitante> visitantesEsperadosSalida;
+    private ArrayList<Visitante> visitantesEsperadosSalida;
     //private ArrayList<Visitante> visitantesTotales;
 
     public GestorVisitante() {
         this.visitantesEsperadosEntrada = new ArrayList<Visitante>();
-        //this.visitantesEsperadosSalida = new ArrayList<Visitante>();
+        this.visitantesEsperadosSalida = new ArrayList<Visitante>();
         //this.visitantesTotales = new ArrayList<Visitante>();
 
     }
@@ -29,15 +29,17 @@ public class GestorVisitante {
     * para salida y lo elimina de visitantes esperados entrada.
     * @param Visitante v 
     */
-    /*
+    
     public void addVisitanteEsperadoSalida(Visitante v){
         this.visitantesEsperadosSalida.add(v);
         this.visitantesEsperadosEntrada.remove(v);
+        System.out.println("Visitante Entrada removido, Visitantes Entrada Totales:" + this.visitantesEsperadosEntrada + "Salida Agrgragado: " + this.visitantesEsperadosSalida);
     }
-*/
 
-    public void removeVisitanteEsperadoEntrada(Visitante v){
-        this.visitantesEsperadosEntrada.remove(v);
+
+    public void removeVisitanteEsperadoSalida(Visitante v){
+        this.visitantesEsperadosSalida.remove(v);
+        System.out.println("Visitante Salida removido, Visitantes Salida Totales:" + this.visitantesEsperadosSalida);
     }
     public ArrayList<Visitante> getVisitantesEsperadosEntrada() {
         return visitantesEsperadosEntrada;
@@ -46,7 +48,7 @@ public class GestorVisitante {
     public void setVisitantesEsperadosEntrada(ArrayList<Visitante> visitantesEsperadosEntrada) {
         this.visitantesEsperadosEntrada = visitantesEsperadosEntrada;
     }
-/*
+
     public ArrayList<Visitante> getVisitantesEsperadosSalida() {
         return visitantesEsperadosSalida;
     }
@@ -54,7 +56,7 @@ public class GestorVisitante {
     public void setVisitantesEsperadosSalida(ArrayList<Visitante> visitantesEsperadosSalida) {
         this.visitantesEsperadosSalida = visitantesEsperadosSalida;
     }
-
+/*
     public ArrayList<Visitante> getVisitantesTotales() {
         return visitantesTotales;
     }
@@ -66,9 +68,10 @@ public class GestorVisitante {
 
     @Override
     public String toString() {
-        return "GestorVisitante{" + "visitantesEsperadosEntrada=" + visitantesEsperadosEntrada + '}';
+        return "GestorVisitante{" + "visitantesEsperadosEntrada=" + visitantesEsperadosEntrada + ", visitantesEsperadosSalida=" + visitantesEsperadosSalida + '}';
     }
 
+    
    
    
     

@@ -348,7 +348,12 @@ public class AddPropietario extends javax.swing.JFrame {
         this.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
             public void windowClosing(java.awt.event.WindowEvent windowEvent) {
-                ino.setAddProp(false);
+                try{
+                    ino.setAddProp(false);
+                }
+                catch(Exception e){
+                    System.out.println("Arduino NO conectado");
+                }
                 //Borrar txt
                 txtName.setText("");
                 txtSurname.setText("");

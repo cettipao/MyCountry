@@ -82,27 +82,27 @@ public class Guardia extends javax.swing.JFrame {
         lblTipoIngresante.setText("Propietario/Visitante");
 
         lblNombre.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblNombre.setForeground(new java.awt.Color(204, 204, 204));
+        lblNombre.setForeground(new java.awt.Color(153, 153, 153));
         lblNombre.setText("Nombre:");
 
         lblName.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblName.setForeground(new java.awt.Color(153, 153, 153));
+        lblName.setForeground(new java.awt.Color(204, 204, 204));
         lblName.setText("nombre");
 
         lblApellido.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblApellido.setForeground(new java.awt.Color(204, 204, 204));
+        lblApellido.setForeground(new java.awt.Color(153, 153, 153));
         lblApellido.setText("Apellido:");
 
         lblSurname.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblSurname.setForeground(new java.awt.Color(153, 153, 153));
+        lblSurname.setForeground(new java.awt.Color(204, 204, 204));
         lblSurname.setText("apellido");
 
         lblDocumento.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblDocumento.setForeground(new java.awt.Color(204, 204, 204));
+        lblDocumento.setForeground(new java.awt.Color(153, 153, 153));
         lblDocumento.setText("DNI:");
 
         lblDni.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblDni.setForeground(new java.awt.Color(153, 153, 153));
+        lblDni.setForeground(new java.awt.Color(204, 204, 204));
         lblDni.setText("dni");
 
         lblTipoGreso.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -110,11 +110,11 @@ public class Guardia extends javax.swing.JFrame {
         lblTipoGreso.setText("Ingreso/Egreso");
 
         lblPropAnf.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblPropAnf.setForeground(new java.awt.Color(204, 204, 204));
+        lblPropAnf.setForeground(new java.awt.Color(153, 153, 153));
         lblPropAnf.setText("Propietario Anfrition:");
 
         lblPropietarioVisitante.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
-        lblPropietarioVisitante.setForeground(new java.awt.Color(153, 153, 153));
+        lblPropietarioVisitante.setForeground(new java.awt.Color(204, 204, 204));
         lblPropietarioVisitante.setText("propietario");
 
         lblTime.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -243,7 +243,12 @@ public class Guardia extends javax.swing.JFrame {
     private void addPropActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPropActionPerformed
         // TODO add your handling code here:
         addPropietario.setVisible(true);
-        ino.setAddProp(true);
+        try{
+            ino.setAddProp(true);
+        }
+        catch(Exception e){
+            System.out.println("Arduino NO Conectado");
+        }
     }//GEN-LAST:event_addPropActionPerformed
 
     //Instacia un objeto de qrCodeReader para la lectura del qr
@@ -260,8 +265,9 @@ public class Guardia extends javax.swing.JFrame {
         changeLoginInfo.show();
     }//GEN-LAST:event_jButton1ActionPerformed
     
-    //Cambia los lbl con la informacion del propietario en puerta
-    //@param p Propietario
+    /*Cambia los lbl con la informacion del propietario en puerta
+     *@param p Propietario
+    */
     public void propietarioEnPuerta(Propietario p){       
         this.lblName.setText(p.getNombre());
         this.lblSurname.setText(p.getApellido());
@@ -272,8 +278,9 @@ public class Guardia extends javax.swing.JFrame {
     }
     
     
-    //Cambia el txt de addPropietario para no escribir a mano el RFID
-    //@param id String
+    /*Cambia el txt de addPropietario para no escribir a mano el RFID
+     *@param id String
+    */
     public void setTxtNewProp(String id) {
         addPropietario.setTextRfid(id);
     }
@@ -284,8 +291,9 @@ public class Guardia extends javax.swing.JFrame {
         relojThread.start();
     }
     
-    //Camvia la informacion de los labels con la del visitante si es que es esperado
-    //@param visitante v
+    /*Cambia la informacion de los labels con la del visitante si es que es esperado
+     *@param visitante v
+    */
     public void visitante(String id){
         fm.CrearGestorVisitante();
         System.out.println("Qr Detectado");
@@ -296,13 +304,30 @@ public class Guardia extends javax.swing.JFrame {
                 this.lblDni.setText(v.getDNI());
                 this.lblTipoIngresante.setText("Visitante");
                 this.lblTipoGreso.setText("Ingreso");
-                this.lblPropietarioVisitante.setText(v.getPropietario().getApellido());
-                
-                fm.getGestorVisitante().removeVisitanteEsperadoEntrada(v);
+                //Conseguir apellido del Propietario del Visitante
+                this.fm.getGestorPropietario().getPropietarios().stream().filter((p) -> (p.getIdPropietario() == v.getIdProp())).forEachOrdered((p) -> {
+                    this.lblPropietarioVisitante.setText(p.getApellido());
+                });     
+                fm.getGestorVisitante().addVisitanteEsperadoSalida(v);
                 fm.guardarObjeto("gestorVisitantes");
                 return;
-            }
-            
+            }  
+        }
+        for (Visitante v : fm.getGestorVisitante().getVisitantesEsperadosSalida()) {
+            if(Integer.toString(v.getIdVisitante()).equals(id)){
+                this.lblName.setText(v.getNombre());
+                this.lblSurname.setText(v.getApellido());
+                this.lblDni.setText(v.getDNI());
+                this.lblTipoIngresante.setText("Visitante");
+                this.lblTipoGreso.setText("Egreso");
+                //Conseguir apellido del Propietario del Visitante
+                this.fm.getGestorPropietario().getPropietarios().stream().filter((p) -> (p.getIdPropietario() == v.getIdProp())).forEachOrdered((p) -> {
+                    this.lblPropietarioVisitante.setText(p.getApellido());
+                });
+                fm.getGestorVisitante().removeVisitanteEsperadoSalida(v);
+                fm.guardarObjeto("gestorVisitantes");
+                return;
+            }  
         }
         Advertencia advertencia = new Advertencia(this,true,"Codigo QR no valido");
         advertencia.show();

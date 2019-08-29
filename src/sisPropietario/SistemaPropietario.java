@@ -311,7 +311,14 @@ public class SistemaPropietario extends javax.swing.JFrame {
         }
         //Comprueba si hay algun invitado esperado de mismo DNI del mismo propietario
         for (Visitante v:fm.getGestorVisitante().getVisitantesEsperadosEntrada()){
-            if(v.getDNI().equals(this.txtDni.getText()) && v.getPropietario().getIdPropietario() == this.propietario.getIdPropietario()){
+            //Conseguir el objeto Propietario del Visitante
+            Propietario prop = null;
+            for(Propietario p :fm.getGestorPropietario().getPropietarios()){
+                if(p.getIdPropietario() == v.getIdProp()){
+                    prop = p;
+                }
+            }
+            if(v.getDNI().equals(this.txtDni.getText()) && prop.getIdPropietario() == this.propietario.getIdPropietario()){
                 System.out.println("Este Propietario ya invito a este visitante");
                 this.lblAdv.setText("Visitante ya invitado");
                 return;

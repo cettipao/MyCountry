@@ -7,12 +7,12 @@ package mycountry;
 public class Visitante extends Persona{
     
     private int idVisitante;
-    private Propietario propietario;
+    private int idProp;
     
     public Visitante(int idVisitante, Propietario propietario,String nombre, String apellido, String DNI) {
         super(nombre, apellido, DNI);
         this.idVisitante = idVisitante;
-        this.propietario = propietario;
+        this.idProp = propietario.getIdPropietario();
     }
 
     public int getIdVisitante() {
@@ -23,19 +23,20 @@ public class Visitante extends Persona{
         this.idVisitante = idVisitante;
     }
 
-    public Propietario getPropietario() {
-        return propietario;
+    public int getIdProp() {
+        return idProp;
     }
 
-    public void setPropietario(Propietario propietario) {
-        this.propietario = propietario;
+    public void setIdProp(int idProp) {
+        this.idProp = idProp;
     }
 
     @Override
     public String toString() {
-        return "Visitante{" + "idVisitante=" + idVisitante + ", propietario=" + propietario + '}';
+        return "Visitante{" + "idVisitante=" + idVisitante + ", idProp=" + idProp + '}';
     }
-
+    
+    
     
     
     
