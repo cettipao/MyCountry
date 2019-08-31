@@ -6,6 +6,7 @@
 package sisPropietario;
 
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import mycountry.FileManager;
 import mycountry.Propietario;
 import mycountry.Visitante;
@@ -20,6 +21,7 @@ public class SistemaPropietario extends javax.swing.JFrame {
         initComponents();
         this.lblProp.setText("Propietario: "+p.getApellido());
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        this.setResizable(false);
         confirmExit();
         this.lblAdv.setText("");
     }
@@ -47,6 +49,7 @@ public class SistemaPropietario extends javax.swing.JFrame {
         lblAdv = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MyCountry | SisPropietario");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));

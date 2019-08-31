@@ -12,7 +12,7 @@ public class Propietario extends Persona{
     private String rfid;
 
     public Propietario(int idPropietario, String usuario, String password, String rfid,String nombre, String apellido, String DNI) {
-        super(nombre, apellido, DNI);
+        super(nombre, apellido, DNI,"Propietario");
         this.idPropietario = idPropietario;
         this.usuario = usuario;
         this.password = password;

@@ -6,6 +6,7 @@
 package sisPropietario;
 
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import mycountry.FileManager;
 import mycountry.Propietario;
 
@@ -46,6 +47,7 @@ public class LoginSisPropietario extends javax.swing.JFrame {
         lblInc = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MyCountry | Login Propietario");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 204));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));

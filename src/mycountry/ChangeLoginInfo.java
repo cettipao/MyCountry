@@ -5,6 +5,7 @@ package mycountry;
 
 import dialogos.Advertencia;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 public class ChangeLoginInfo extends javax.swing.JFrame {
     
@@ -36,8 +37,11 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
         lblUser3 = new javax.swing.JLabel();
         btnResetVisitantes = new javax.swing.JButton();
         btnResetPropietarios = new javax.swing.JButton();
+        btnResetPropietarios1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MyCountry | LoginDataChange");
+        setIconImage(new ImageIcon(getClass().getResource("logo.png")).getImage());
 
         jPanel1.setBackground(new java.awt.Color(30, 30, 30));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -143,6 +147,17 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
             }
         });
 
+        btnResetPropietarios1.setBackground(new java.awt.Color(255, 102, 0));
+        btnResetPropietarios1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        btnResetPropietarios1.setForeground(new java.awt.Color(255, 255, 255));
+        btnResetPropietarios1.setText("Seguimiento");
+        btnResetPropietarios1.setBorder(null);
+        btnResetPropietarios1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnResetPropietarios1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -152,27 +167,32 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
                 .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnResetPropietarios, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblUser)
+                        .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                        .addComponent(lblUser1)
+                        .addComponent(txtPass)
+                        .addComponent(lblUser5)
+                        .addComponent(txtActualPass)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnResetPropietarios, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(lblUser)
-                                .addComponent(txtUser, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                                .addComponent(lblUser1)
-                                .addComponent(txtPass)
-                                .addComponent(lblUser5)
-                                .addComponent(txtActualPass)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblUser2)
                             .addComponent(lblUser3)
-                            .addComponent(btnResetVisitantes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(39, 39, 39))
+                            .addComponent(btnResetVisitantes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(39, 39, 39))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(70, 70, 70)
+                        .addComponent(btnResetPropietarios1, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -197,10 +217,12 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblUser5)
                     .addComponent(btnResetPropietarios, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(txtActualPass, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
-                .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnResetPropietarios1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -212,7 +234,9 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -270,6 +294,12 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
          Advertencia advertencia = new Advertencia(this,true,"Gestor de Visitantes reseteado");
         advertencia.show();
     }//GEN-LAST:event_btnResetPropietariosActionPerformed
+
+    private void btnResetPropietarios1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetPropietarios1ActionPerformed
+        // TODO add your handling code here:
+        SeguimientoFrame seguimientoFrame = new SeguimientoFrame(this.fm);
+        seguimientoFrame.show();
+    }//GEN-LAST:event_btnResetPropietarios1ActionPerformed
     /*
     El metodo changeLoginData cambia los datos del login si es que los campos son correctos (Se necesita la pass actual)
     */
@@ -314,6 +344,7 @@ public class ChangeLoginInfo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChange;
     private javax.swing.JButton btnResetPropietarios;
+    private javax.swing.JButton btnResetPropietarios1;
     private javax.swing.JButton btnResetVisitantes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLogin;

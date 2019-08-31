@@ -12,13 +12,13 @@ import jssc.SerialPortException;
 public class Arduino {
     private PanamaHitek_Arduino ino;
     private SerialPortEventListener listener;
-    private GestorPropietario gp;
+    private FileManager fm;
     private Guardia guardia;
     private AddPropietario ad;
     private boolean addProp;
       
-    public Arduino(GestorPropietario gp, Guardia g, AddPropietario ad) throws ArduinoException{
-        this.gp = gp;
+    public Arduino(FileManager fm, Guardia g, AddPropietario ad) throws ArduinoException{
+        this.fm =fm;
         this.guardia = g;
         this.addProp=false;
         
@@ -31,7 +31,7 @@ public class Arduino {
                     if (addProp) {
                         guardia.setTxtNewProp(id);
                     } else {
-                        for (Propietario p : gp.getPropietarios()) {
+                        for (Propietario p : fm.getGestorPropietario().getPropietarios()) {
                             if (id.equals(p.getRfid())) {
                                 System.out.println("Usuario Permitido. Propietario: " + p);
                                 guardia.propietarioEnPuerta(p);
@@ -61,10 +61,6 @@ public class Arduino {
 
     @Override
     public String toString() {
-        return "Arduino{" + "ino=" + ino + ", listener=" + listener + ", gp=" + gp + ", guardia=" + guardia + ", ad=" + ad + ", addProp=" + addProp + '}';
-    }
-    
-    
-    
-        
+        return "Arduino{" + "ino=" + ino + ", listener=" + listener + ", fm=" + fm + ", guardia=" + guardia + ", ad=" + ad + ", addProp=" + addProp + '}';
+    }   
 }

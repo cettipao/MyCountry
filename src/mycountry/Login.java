@@ -4,7 +4,9 @@
 package mycountry;
 
 import dialogos.Advertencia;
+
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 
 public class Login extends javax.swing.JFrame {
    
@@ -13,6 +15,7 @@ public class Login extends javax.swing.JFrame {
         fm = new FileManager();
         fm.CrearGuardiaLogin();
         initComponents();
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -30,8 +33,9 @@ public class Login extends javax.swing.JFrame {
         btnEntrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Sala de Chat | Login");
+        setTitle("MyCountry | Login");
         setBackground(new java.awt.Color(20, 20, 20));
+        setIconImage(new ImageIcon(getClass().getResource("logo.png")).getImage());
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(30, 30, 30));
@@ -104,9 +108,9 @@ public class Login extends javax.swing.JFrame {
                     .addComponent(lblLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtUser)
                     .addComponent(lblPass)
-                    .addComponent(txtPass, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+                    .addComponent(txtPass)
                     .addComponent(jSeparator2)
-                    .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(btnEntrar, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE))
                 .addContainerGap(27, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(

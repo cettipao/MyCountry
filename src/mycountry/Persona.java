@@ -6,15 +6,17 @@
  */
 package mycountry;
 
-abstract class Persona {
+public class Persona {
     protected String nombre;
     protected String apellido;
     protected String DNI;
+    protected String tipo;
 
-    public Persona(String nombre, String apellido, String DNI) {
+    public Persona(String nombre, String apellido, String DNI,String tipo) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.DNI = DNI;
+        this.tipo = tipo;
     }
 
     public String getNombre() {
@@ -39,6 +41,14 @@ abstract class Persona {
 
     public void setDNI(String DNI) {
         this.DNI = DNI;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     @Override

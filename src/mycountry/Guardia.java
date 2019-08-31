@@ -7,27 +7,36 @@ package mycountry;
 
 import com.panamahitek.ArduinoException;
 import dialogos.Advertencia;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 public class Guardia extends javax.swing.JFrame {
 
     private Arduino ino;
     private FileManager fm;
     private AddPropietario addPropietario;
+    
     public Guardia(FileManager fm) {
         initComponents();
+        this.setResizable(false);
         reloj();
         this.fm = fm;
         fm.CrearGestorPropietario();
         fm.CrearGestorVisitante();
+        fm.CrearSeguimiento();
 
         try {
-            ino = new Arduino(fm.getGestorPropietario(), this, addPropietario);//Instancio Ino (Necesita addprop)
+            ino = new Arduino(fm, this, addPropietario);//Instancio Ino (Necesita addprop)
         } catch (ArduinoException ex) {
             System.out.println("No se pudo establecer conexion con arduino");
             Advertencia advertencia = new Advertencia(this,true,"Error al conectar Arduino");
             advertencia.show();
         }
         addPropietario = new AddPropietario(ino, fm);//Instancio addProp (Necesita ino)
+        
+        
     }
 
 
@@ -54,6 +63,8 @@ public class Guardia extends javax.swing.JFrame {
         btnEscanear1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MyCountry | Sistema Guardia");
+        setIconImage(new ImageIcon(getClass().getResource("logo.png")).getImage());
 
         jPanel1.setBackground(new java.awt.Color(30, 30, 30));
         jPanel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -172,7 +183,7 @@ public class Guardia extends javax.swing.JFrame {
                                     .addComponent(lblName, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblSurname, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblDni, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 74, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -183,7 +194,7 @@ public class Guardia extends javax.swing.JFrame {
                         .addComponent(addProp, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnEscanear1, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,6 +286,8 @@ public class Guardia extends javax.swing.JFrame {
         this.lblTipoIngresante.setText("Propietario");
         this.lblTipoGreso.setText("");
         this.lblPropietarioVisitante.setText("propietario");
+        this.fm.getSeguimiento().addPasada(p, null);
+        this.fm.guardarObjeto("seguimiento");
     }
     
     
@@ -310,6 +323,8 @@ public class Guardia extends javax.swing.JFrame {
                 });     
                 fm.getGestorVisitante().addVisitanteEsperadoSalida(v);
                 fm.guardarObjeto("gestorVisitantes");
+                this.fm.getSeguimiento().addPasada(v, "Ingreso");
+                this.fm.guardarObjeto("seguimiento");
                 return;
             }  
         }
@@ -326,6 +341,8 @@ public class Guardia extends javax.swing.JFrame {
                 });
                 fm.getGestorVisitante().removeVisitanteEsperadoSalida(v);
                 fm.guardarObjeto("gestorVisitantes");
+                this.fm.getSeguimiento().addPasada(v, "Egreso");
+                this.fm.guardarObjeto("seguimiento");
                 return;
             }  
         }

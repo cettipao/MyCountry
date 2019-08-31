@@ -33,13 +33,11 @@ public class GestorVisitante {
     public void addVisitanteEsperadoSalida(Visitante v){
         this.visitantesEsperadosSalida.add(v);
         this.visitantesEsperadosEntrada.remove(v);
-        System.out.println("Visitante Entrada removido, Visitantes Entrada Totales:" + this.visitantesEsperadosEntrada + "Salida Agrgragado: " + this.visitantesEsperadosSalida);
     }
 
 
     public void removeVisitanteEsperadoSalida(Visitante v){
         this.visitantesEsperadosSalida.remove(v);
-        System.out.println("Visitante Salida removido, Visitantes Salida Totales:" + this.visitantesEsperadosSalida);
     }
     public ArrayList<Visitante> getVisitantesEsperadosEntrada() {
         return visitantesEsperadosEntrada;

@@ -10,7 +10,7 @@ public class Visitante extends Persona{
     private int idProp;
     
     public Visitante(int idVisitante, Propietario propietario,String nombre, String apellido, String DNI) {
-        super(nombre, apellido, DNI);
+        super(nombre, apellido, DNI,"Visitante");
         this.idVisitante = idVisitante;
         this.idProp = propietario.getIdPropietario();
     }

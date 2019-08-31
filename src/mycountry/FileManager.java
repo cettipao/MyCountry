@@ -8,6 +8,7 @@ package mycountry;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -18,10 +19,11 @@ public class FileManager {
     private GestorPropietario gestorPropietario;
     private GestorVisitante gestorVisitante;
     private GuardiaLogin guardiaLogin;
-    
+    private Seguimiento seguimiento;
 
     public FileManager() {
         this.gson = new Gson();
+       
     }
     /*
      * Convierte el String guardado en gestorPropietario.txt
@@ -78,6 +80,19 @@ public class FileManager {
             System.out.println(e);
         } 
     }
+   
+    public void CrearSeguimiento() {
+        try {
+            File archivo = new File("src/json/seguimiento.txt");
+            FileReader fr = new FileReader(archivo);
+            BufferedReader br = new BufferedReader(fr);
+            String linea = br.readLine();
+            Seguimiento obj = gson.fromJson(linea, Seguimiento.class);
+            seguimiento = obj;
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
     
     
     /*
@@ -101,6 +116,9 @@ public class FileManager {
                 path = "src/json/guardiaLogin.txt";
                 objeto = this.guardiaLogin;
                 break;
+            case "seguimiento":
+                path = "src/json/seguimiento.txt";
+                objeto = this.seguimiento;
             default:
                 break;
         }
@@ -128,10 +146,11 @@ public class FileManager {
             }
         }
         this.CrearGestorVisitante();
-
+        this.CrearGestorPropietario();
+        this.CrearGuardiaLogin();
+        this.CrearSeguimiento();
+        
     }
-    
-    
     
     public int getUltimoIdPropietario(){
         if(this.gestorPropietario.getPropietarios().isEmpty()){
@@ -141,10 +160,29 @@ public class FileManager {
     }
     
     public int getUltimoIdVisitante(){
+        this.CrearGestorVisitante();
+        int entrada;
+        int salida;
         if(this.gestorVisitante.getVisitantesEsperadosEntrada().isEmpty()){
+            entrada = -1;
+        }
+        else{
+            entrada = this.gestorVisitante.getVisitantesEsperadosEntrada().get(this.gestorVisitante.getVisitantesEsperadosEntrada().size()-1).getIdVisitante();
+
+        }
+        if(this.gestorVisitante.getVisitantesEsperadosSalida().isEmpty()){
+            salida = -1;
+        }
+        else{
+            salida = this.gestorVisitante.getVisitantesEsperadosSalida().get(this.gestorVisitante.getVisitantesEsperadosSalida().size()-1).getIdVisitante();
+        }
+        if(entrada>salida){
+            return entrada;
+        }
+        else if(entrada == salida){
             return -1;
         }
-        return this.gestorVisitante.getVisitantesEsperadosEntrada().get(this.gestorVisitante.getVisitantesEsperadosEntrada().size()-1).getIdVisitante();
+        return salida;
     }
 
     public GestorPropietario getGestorPropietario() {
@@ -157,6 +195,10 @@ public class FileManager {
 
     public GuardiaLogin getGuardiaLogin() {
         return guardiaLogin;
+    }
+
+    public Seguimiento getSeguimiento() {
+        return seguimiento;
     }
 
     public void setGestorPropietario(GestorPropietario gestorPropietario) {
